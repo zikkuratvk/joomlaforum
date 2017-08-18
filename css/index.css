@@ -65,11 +65,15 @@ form {
 */
 
 input, button, select, textarea {
-	color      : #000;
-	background : #FFF;
-	border     : 1px solid #7F9DB9;
-	padding    : 2px;
-	min-height : 30px;
+	color              : #000;
+	background         : #FFF;
+	border             : 1px solid #7F9DB9;
+	padding            : 2px;
+	min-height         : 30px;
+	max-width          : 100%;
+	-webkit-box-sizing : border-box;
+	-moz-box-sizing    : border-box;
+	box-sizing         : border-box;
 }
 
 /* Select elements look horrible with the extra padding, so leave them unpadded. */
@@ -4201,9 +4205,13 @@ input[name=search] {
 }
 
 /*new mobile*/
+@media screen and (max-width : 800px) {
+	hr {
+		margin : 2px -15px;
+	}
+}
 
 @media (max-width : 700px) {
-
 	div#display_jump_to {
 		display : none;
 	}
@@ -4268,11 +4276,59 @@ input[name=search] {
 		min-width : 20px;
 	}
 
+	form#postmodify .roundframe,
+	#quickReplyOptions .roundframe {
+		padding : 0 15px;
+	}
+
+	#quickreplybox {
+		margin-top : 15px;
+	}
+}
+
+@media screen and (max-width : 540px) {
+	#post_header dt, .postbox dt {
+		width              : 20%;
+		padding            : 0 5px 0 0;
+		-webkit-box-sizing : border-box;
+		-moz-box-sizing    : border-box;
+		box-sizing         : border-box;
+	}
+
+	#post_header dd, .postbox dd {
+		width : 80%;
+	}
+}
+
+@media screen and (max-width : 420px) {
+	.quickReplyContent__button .btn,
+	#post_confirm_buttons .btn {
+		display : block;
+		width   : 100%;
+	}
+
+	.quickReplyContent__button .btn + .btn,
+	#post_confirm_buttons .btn + .btn {
+		margin-top : 5px;
+	}
 }
 
 @media (max-width : 400px) {
 	a.navbar-brand {
 		padding-right : 0;
+	}
+
+	#post_header dt, .postbox dt {
+		width : 30%;
+	}
+
+	#post_header dd, .postbox dd {
+		width : 70%;
+	}
+
+	#post_header dd #icon + img,
+	.postbox dd #icon + img {
+		margin : 0 0 0 3px;
 	}
 }
 

@@ -731,7 +731,7 @@ function template_main()
 							<div class="quickReplyContent">
 								<textarea cols="600" rows="7" name="message" tabindex="', $context['tabindex']++, '"></textarea>
 							</div>
-							<div class="righttext padding">
+							<div class="righttext padding quickReplyContent__button">
 								<input type="submit" name="post" value="', $txt['post'], '" onclick="return submitThisOnce(this);" accesskey="s" tabindex="', $context['tabindex']++, '" class="button_submit" />
 								<input type="submit" name="preview" value="', $txt['preview'], '" onclick="return submitThisOnce(this);" accesskey="p" tabindex="', $context['tabindex']++, '" class="button_submit" />';
 
