@@ -4252,10 +4252,6 @@ input[name=search] {
 		width : 100%;
 	}
 
-	.pagesection {
-		display : none;
-	}
-
 	.display-info h2 {
 		display : none;
 	}
@@ -4266,6 +4262,10 @@ input[name=search] {
 
 	div#topic_icons {
 		display : none;
+	}
+
+	.nextlinks_bottom {
+		display: none;
 	}
 
 	.description_board {
