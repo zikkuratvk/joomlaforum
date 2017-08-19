@@ -4204,6 +4204,10 @@ input[name=search] {
 	margin-right     : 3px;
 }
 
+.alert.alert-success {
+    background-color: #fff;
+}
+
 /*new mobile*/
 @media screen and (max-width : 800px) {
 	hr {
