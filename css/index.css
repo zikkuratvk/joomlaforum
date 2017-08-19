@@ -4212,6 +4212,10 @@ td.moderation.stickybg {
     min-width: 60px;
 }
 
+#bbcBox_message div img {
+    vertical-align: middle;
+}
+
 /*new mobile*/
 @media screen and (max-width : 800px) {
 	hr {
