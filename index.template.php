@@ -81,45 +81,114 @@ function template_html_above()
 
 	// Show right to left and the character set for ease of translating.
 	echo '<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"', $context['right_to_left'] ? ' dir="rtl"' : '', '>
+<html lang="ru-ru"', $context['right_to_left'] ? ' dir="rtl"' : 'dir="ltr"', '>
 <head>';
- 
+	echo'
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="', $context['page_title_html_safe'], '">', !empty($context['meta_keywords']) ? '
+	<meta name="keywords" content="' . $context['meta_keywords'] . '">' : '', '
+	<title>', $context['page_title_html_safe'], ' - Форум русской поддержки Joomla!</title>';
+
+	// Please don't index these Mr Robot.
+	if (!empty($context['robot_no_index']))
+		echo '';
+
+	// Present a canonical url for search engines to prevent duplicate content in their indices.
+	if (!empty($context['canonical_url']))
+		echo '
+	<link rel="canonical" href="', $context['canonical_url'], '">';
+
+	// Show all the relative links, such as help, search, contents, and the like.
+	echo '
+	<link rel="help" href="', $scripturl, '?action=help">
+	<link rel="search" href="', $scripturl, '?action=search">
+	<link rel="contents" href="', $scripturl, '">';
+
+	// If RSS feeds are enabled, advertise the presence of one.
+	if (!empty($modSettings['xmlnews_enable']) && (!empty($modSettings['allow_guestAccess']) || $context['user']['is_logged']))
+		echo '
+	<link rel="alternate" type="application/rss+xml" title="', $context['forum_name_html_safe'], ' - ', $txt['rss'], '" href="', $scripturl, '?type=rss;action=.xml">';
+
+	// If we're viewing a topic, these should be the previous and next topics, respectively.
+	if (!empty($context['current_topic']))
+		echo '
+	<link rel="prev" href="', $scripturl, '?topic=', $context['current_topic'], '.0;prev_next=prev">
+	<link rel="next" href="', $scripturl, '?topic=', $context['current_topic'], '.0;prev_next=next">';
+
+	// If we're in a board, or a topic for that matter, the index will be the board's index.
+	if (!empty($context['current_board']))
+		echo '
+	<link rel="index" href="', $scripturl, '?board=', $context['current_board'], '.0">';
+
 	// The ?fin20 part of this link is just here to make sure browsers don't cache it wrongly.
 	echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/bootstrap.css?fin20" />
-	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/font-awesome.css?fin20" />
-	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin23" />';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.min.css?fin25">
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin25">
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin25">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
 		if ($context['browser']['is_' . $cssfix])
 			echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['default_theme_url'], '/css/', $cssfix, '.css" />';
+	<link rel="stylesheet" href="', $settings['default_theme_url'], '/css/', $cssfix, '.css">';
 
 	// RTL languages require an additional stylesheet.
 	if ($context['right_to_left'])
 		echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/rtl.css" />';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/rtl.css">';
+
+	echo '
+	<style>
+	@media (min-width: 768px) {
+		.container {
+			width: ' . $settings['forum_width'] . ';
+		}
+	}';
+	if (!empty($settings['redsy_navbar_height']))
+	{
+	echo'
+	.navbar-default {
+		height: ' . $settings['redsy_navbar_height'] . ';
+	}
+	.navbar-default .navbar-nav, .nav-notification {
+		margin-top: ' . (($settings['redsy_navbar_height'] - 50) / 2)  . 'px !important;
+	}
+	.navbar-toggle, .navbar-brand {
+		height: ' . $settings['redsy_navbar_height']  . ' !important;
+	}
+	.navbar-toggle {
+		line-height: ' . $settings['redsy_navbar_height']  . ' !important;
+	}
+	.navbar-brand {
+		line-height: ' . ($settings['redsy_navbar_height'] - 30) . 'px !important;
+	}
+	.navbar-brand .logo {
+		max-height: ' . $settings['redsy_navbar_height']  . ' !important;
+	}';
+	}
+	echo '
+	</style>';
 
 	// Here comes the JavaScript bits!
 	echo '
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript" src="', $settings['theme_url'], '/scripts/redsy.js?fin20"></script>
-	<script type="text/javascript" src="', $settings['theme_url'], '/scripts/bootstrap.min.js?fin20"></script>
-	<script type="text/javascript">
+	<script src="', $settings['theme_url'], '/scripts/jquery.min.js"></script>
+	<script src="', $settings['theme_url'], '/scripts/bootstrap.min.js?fin25"></script>
+	<script src="', $settings['theme_url'], '/scripts/redsy.js?fin25"></script>
+	<script>
 	$(document).ready(function(){
 		$("input[type=button]").attr("class", "btn btn-default btn-sm");
 		$(".button_submit").attr("class", "btn btn-danger btn-sm");
-		$("#advanced_search input[type=\'text\'], #search_term_input input[type=\'text\']").removeAttr("size"); 
+		$("#advanced_search input[type=\'text\'], #search_term_input input[type=\'text\']").removeAttr("size");
 		$(".table_grid").addClass("table table-striped");
-		
-		$("#profile_success").removeAttr("id").removeClass("windowbg").addClass("alert alert-success"); 
-		$("#profile_error").removeAttr("id").removeClass("windowbg").addClass("alert alert-danger"); 
+		$("#profile_success").removeAttr("id").removeClass("windowbg").addClass("alert alert-success");
+		$("#profile_error").removeAttr("id").removeClass("windowbg").addClass("alert alert-danger");
 	});
-	</script>	
-	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/script.js?fin20"></script>
-	<script type="text/javascript" src="', $settings['theme_url'], '/scripts/theme.js?fin20"></script>
-	<script type="text/javascript"><!-- // --><![CDATA[
+	</script>
+	<script src="', $settings['default_theme_url'], '/scripts/script.js?fin20"></script>
+	<script src="', $settings['theme_url'], '/scripts/theme.js?fin20"></script>
+	<script><!-- // --><![CDATA[
 		var smf_theme_url = "', $settings['theme_url'], '";
 		var smf_default_theme_url = "', $settings['default_theme_url'], '";
 		var smf_images_url = "', $settings['images_url'], '";
@@ -135,82 +204,6 @@ function template_html_above()
 		var ajax_notification_text = "', $txt['ajax_in_progress'], '";
 		var ajax_notification_cancel_text = "', $txt['modify_cancel'], '";
 	// ]]></script>';
-
-	echo '
-	<style type="text/css">
-	@media (min-width: 768px) 
-	{
-		.container {
-			width: ' . $settings['forum_width'] . ';
-		}
-	}';
-	if(!empty($settings['redsy_navbar_height']))
-	{
-	echo'
-	.navbar-default
-	{
-		height: ' . $settings['redsy_navbar_height'] . ';
-	}
-	.navbar-default .navbar-nav, .nav-notification
-	{
-		margin-top: ' . (($settings['redsy_navbar_height'] - 50) / 2)  . 'px !important;
-	}
-	.navbar-toggle, .navbar-brand
-	{
-		height: ' . $settings['redsy_navbar_height']  . ' !important;
-	}
-	.navbar-toggle
-	{
-		line-height: ' . $settings['redsy_navbar_height']  . ' !important;
-	}
-	.navbar-brand
-	{
-		line-height: ' . ($settings['redsy_navbar_height'] - 30) . 'px !important;
-	}
-	.navbar-brand .logo
-	{
-		max-height: ' . $settings['redsy_navbar_height']  . ' !important;
-	}';
-	}
-	echo'
-	</style>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta http-equiv="Content-Type" content="text/html; charset=', $context['character_set'], '" />
-	<meta name="description" content="', $context['page_title_html_safe'], '" />', !empty($context['meta_keywords']) ? '
-	<meta name="keywords" content="' . $context['meta_keywords'] . '" />' : '', '
-	<title>', $context['page_title_html_safe'], ' - Форум русской поддержки Joomla</title>';
-
-	// Please don't index these Mr Robot.
-	if (!empty($context['robot_no_index']))
-		echo '
-';
-
-	// Present a canonical url for search engines to prevent duplicate content in their indices.
-	if (!empty($context['canonical_url']))
-		echo '
-	<link rel="canonical" href="', $context['canonical_url'], '" />';
-
-	// Show all the relative links, such as help, search, contents, and the like.
-	echo '
-	<link rel="help" href="', $scripturl, '?action=help" />
-	<link rel="search" href="', $scripturl, '?action=search" />
-	<link rel="contents" href="', $scripturl, '" />';
-
-	// If RSS feeds are enabled, advertise the presence of one.
-	if (!empty($modSettings['xmlnews_enable']) && (!empty($modSettings['allow_guestAccess']) || $context['user']['is_logged']))
-		echo '
-	<link rel="alternate" type="application/rss+xml" title="', $context['forum_name_html_safe'], ' - ', $txt['rss'], '" href="', $scripturl, '?type=rss;action=.xml" />';
-
-	// If we're viewing a topic, these should be the previous and next topics, respectively.
-	if (!empty($context['current_topic']))
-		echo '
-	<link rel="prev" href="', $scripturl, '?topic=', $context['current_topic'], '.0;prev_next=prev" />
-	<link rel="next" href="', $scripturl, '?topic=', $context['current_topic'], '.0;prev_next=next" />';
-
-	// If we're in a board, or a topic for that matter, the index will be the board's index.
-	if (!empty($context['current_board']))
-		echo '
-	<link rel="index" href="', $scripturl, '?board=', $context['current_board'], '.0" />';
 
 	// Output any remaining HTML headers. (from mods, maybe?)
 	echo $context['html_headers'];
@@ -234,16 +227,16 @@ function template_body_above()
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>';
-				
+
 			if(!empty($context['user']['is_logged']))
 				echo '
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-menu">
 					<i class="fa fa-user"></i>
 				</button>';
-				
+
 			echo '
 				<a class="navbar-brand" href="/">Форум поддержки Joomla</a>
-			</div>			
+			</div>
 			<div class="collapse navbar-collapse">
 				<button type="button" class="navbar-toggle collapsed collapsemenu" id="upshrink" style="display: none;">
 					<span class="icon-bar"></span>
@@ -256,7 +249,7 @@ function template_body_above()
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown first-level">
 							<a href="' , $scripturl , '?action=profile" class="dropdown-toggle">
-								<img class="avatar img-circle" src="', !empty($context['user']['avatar']['href']) ? $context['user']['avatar']['href'] : $settings['images_url']. '/noavatar.png' ,'" alt="*" />
+								<img class="avatar img-circle" src="', !empty($context['user']['avatar']['href']) ? $context['user']['avatar']['href'] : $settings['images_url']. '/noavatar.png' ,'" alt="*">
 								<span>', $context['user']['name'], '</span> <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menu">
@@ -271,7 +264,7 @@ function template_body_above()
 					</ul>';
 				}
 				echo'
-				<ul class="nav-notification navbar-right">	
+				<ul class="nav-notification navbar-right">
 					<li class="search-list">
 						<div class="search-input-wrapper">
 							<div class="search-input">
@@ -283,11 +276,11 @@ function template_body_above()
 									// Search within current topic?
 									if (!empty($context['current_topic']))
 										echo '
-											<input type="hidden" name="topic" value="', $context['current_topic'], '" />';
+											<input type="hidden" name="topic" value="', $context['current_topic'], '">';
 									// If we're on a certain board, limit it to this board ;).
 									elseif (!empty($context['current_board']))
 										echo '
-											<input type="hidden" name="brd[', $context['current_board'], ']" value="', $context['current_board'], '" />';
+											<input type="hidden" name="brd[', $context['current_board'], ']" value="', $context['current_board'], '">';
 									echo '
 								</form>
 							</div>
@@ -297,9 +290,9 @@ function template_body_above()
 			</div>
 		</div>
 	</nav>';
-	
+
 	template_menu();
-	
+
 	// Define the upper_section toggle in JavaScript.
 	if(!empty($context['user']['is_logged']))
 	echo '
@@ -314,7 +307,7 @@ function template_body_above()
 		</ul>
 	</div>';
 	echo '
-		<script type="text/javascript"><!-- // --><![CDATA[
+		<script><!-- // --><![CDATA[
 			var oMainHeaderToggle = new smc_Toggle({
 				bToggleEnabled: true,
 				bCurrentlyCollapsed: ', empty($options['collapse_header']) ? 'false' : 'true', ',
@@ -340,10 +333,10 @@ function template_body_above()
 				}
 			});
 		// ]]></script>';
-		
+
 		echo'
 	<header id="header">
-		<div class="container">'; 
+		<div class="container">';
 			pages_titlesdesc();
 			theme_linktree();
 		echo'
@@ -378,7 +371,7 @@ function template_body_below()
 				<a href="', !empty($settings['facebook_text']) ? $settings['facebook_text'] : 'http://www.facebook.com ' ,'" title="', $txt['rs_facebook'], '"><i class="fa fa-facebook fa-2x"></i></a>
 			</li>';
 			if(!empty($settings['twitter_check']))
-			echo'			
+			echo'
 			<li>
 				<a href="', !empty($settings['twitter_text']) ? $settings['twitter_text'] : 'http://www.twitter.com' ,'" title="', $txt['rs_twitter'], '"><i class="fa fa-twitter fa-2x"></i></a>
 			</li>';
@@ -400,12 +393,12 @@ function template_body_below()
 			<li>Joomlaforum.ru is not affiliated with or endorsed by the Joomla! Project or Open Source Matters.
 The Joomla! name and logo is used under a limited license granted by Open Source Matters
 the trademark holder in the United States and other countries.</li>
-			
+
 		</ul>
-		
-		
+
+
 		<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+<script >
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
@@ -431,7 +424,7 @@ the trademark holder in the United States and other countries.</li>
         } else { f(); }
     })(document, window, "yandex_metrika_callbacks");
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/40158835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/40158835" style="position:absolute; left:-9999px;" alt=""></div></noscript>
 <!-- /Yandex.Metrika counter -->
 		';
 
@@ -492,7 +485,7 @@ function template_menu()
 
 	echo '
 	<div id="menu">
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">	
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<div class="container">
 				<div class="row">
 					<ul class="nav navbar-nav">';
@@ -593,7 +586,7 @@ function pages_titlesdesc()
 
 		echo '
 		<h1>',$context['page_title'],'</h1>';
-		
+
 }
 
 
