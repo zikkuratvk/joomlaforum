@@ -139,6 +139,23 @@ function template_options()
 			),
 			'default' => true,
 		),
+		
+		array(
+			'id' => 'wysiwyg_quick_reply',
+			'label' => $txt['wysiwyg_quick_reply'],
+			'options' => array(
+				0 => $txt['wysiwyg_quick_reply0'],
+				1 => $txt['wysiwyg_quick_reply1'],
+				2 => $txt['wysiwyg_quick_reply2'],
+				3 => $txt['wysiwyg_quick_reply3'],
+				4 => $txt['wysiwyg_quick_reply4'],
+				5 => $txt['wysiwyg_quick_reply5'],
+				6 => $txt['wysiwyg_quick_reply6'],
+				7 => $txt['wysiwyg_quick_reply7'],
+			),
+			'default' => true,
+		),
+		
 		array(
 			'id' => 'display_quick_mod',
 			'label' => $txt['display_quick_mod'],

@@ -305,10 +305,10 @@ function template_body_above()
 	echo '
 	<div class="collapse navbar-collapse" id="user-menu">
 		<ul class="nav navbar-nav" role="menu">
-			<li><a href="' , $scripturl , '?action=profile;area=forumprofile;"><i class="fa fa-gear fa-fw"></i>' , $txt['edit_profile'] , '</a></li>
+			<li><a href="' , $scripturl , '?action=profile;area=forumprofile;"><i class="fa fa-gear fa-fw"></i>Настройка профиля</a></li>
 			<li><a href="' , $scripturl , '?action=profile;area=account;"><i class="fa fa-wrench fa-fw"></i>Профиль</a></li>
 			<li><a href="' , $scripturl , '?action=unread;"><i class="fa fa-comment fa-fw"></i>' , $txt['new_posts'] , '</a></li>
-			<li><a href="' , $scripturl , '?action=unreadreplies;"><i class="fa fa-comments fa-fw"></i>' , $txt['new_replies'] , '</a></li>
+			<li><a href="' , $scripturl , '?action=unreadreplies;"><i class="fa fa-comments fa-fw"></i>Новые ответы</a></li>
 			<li class="divider"></li>
 			<li><a href="' , $scripturl , '?action=logout;sesc=', $context['session_id'], '"><i class="fa fa-sign-out fa-fw"></i>' , $txt['logout'] , '</a></li>
 		</ul>

@@ -4216,6 +4216,15 @@ td.moderation.stickybg {
     vertical-align: middle;
 }
 
+#quickReplyOptions #html_message {
+    width: 100% !important;
+}
+
+#bbcBox_message select {
+    padding: 5px;
+}
+
+
 /*new mobile*/
 @media screen and (max-width : 800px) {
 	hr {

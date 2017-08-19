@@ -699,7 +699,7 @@ function template_main()
 				<div id="quickReplyOptions"', $options['display_quick_reply'] == 2 ? '' : ' style="display: none"', '>
 					<span class="upperframe"><span></span></span>
 					<div class="roundframe">
-						<p class="smalltext lefttext">', $txt['quick_reply_desc'], '</p>
+						<p class="smalltext lefttext"></p>
 						', $context['is_locked'] ? '<p class="alert smalltext">' . $txt['quick_reply_warning'] . '</p>' : '',
 						$context['oldTopicError'] ? '<p class="alert smalltext">' . sprintf($txt['error_old_topic'], $modSettings['oldTopicDays']) . '</p>' : '', '
 						', $context['can_reply_approved'] ? '' : '<em>' . $txt['wait_for_approval'] . '</em>', '
@@ -727,21 +727,33 @@ function template_main()
 				echo '
 							<strong>', $txt['verification'], ':</strong>', template_control_verification($context['visual_verification_id'], 'quick_reply'), '<br />';
 
+			// Start of WYSIWYG Quick Reply
+
+			// Only show bbcode bar if BBCodes are enabled, AND if its a quick reply mode with bbcode bar			
+			if ($context['show_bbc'] && (in_array($options['wysiwyg_quick_reply'], array(0, 1, 4, 5))))
+				echo '<div id="bbcBox_message"></div>'; 			
+
+			// Only show smilies if smiliesare enabled AND if its a quick reply mode with smilies
+			if (!empty($context['smileys']['postform']) && (in_array($options['wysiwyg_quick_reply'], array(0, 2, 4, 6))))
+				echo ' <div id="smileyBox_message"></div>'; 				
+
+			// Show the quick reply (WYSIWYG vs NON-WYSIWYG dealt with already decided in source file)
+			echo  template_control_richedit($context['post_box_name'], 'smileyBox_message', 'bbcBox_message'), '';
+			
+			// End of WYSIWYG Quick Reply
+			
 			echo '
-							<div class="quickReplyContent">
-								<textarea cols="600" rows="7" name="message" tabindex="', $context['tabindex']++, '"></textarea>
-							</div>
-							<div class="righttext padding quickReplyContent__button">
+							<div id="qr_buttons">
 								<input type="submit" name="post" value="', $txt['post'], '" onclick="return submitThisOnce(this);" accesskey="s" tabindex="', $context['tabindex']++, '" class="button_submit" />
 								<input type="submit" name="preview" value="', $txt['preview'], '" onclick="return submitThisOnce(this);" accesskey="p" tabindex="', $context['tabindex']++, '" class="button_submit" />';
-
 			if ($context['show_spellchecking'])
 				echo '
 								<input type="button" value="', $txt['spell_check'], '" onclick="spellCheck(\'postmodify\', \'message\');" tabindex="', $context['tabindex']++, '" class="button_submit" />';
-
 			echo '
-							</div>
-						</form>
+								<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
+								<input type="hidden" name="seqnum" value="', $context['form_sequence_number'], '" />
+							</div>	
+					</form>
 					</div>
 					<span class="lowerframe"><span></span></span>
 				</div>
