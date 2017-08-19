@@ -124,7 +124,7 @@ function template_html_above()
 
 	// The ?fin20 part of this link is just here to make sure browsers don't cache it wrongly.
 	echo '
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.min.css?fin25">
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin25">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin25">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin25">';
 
