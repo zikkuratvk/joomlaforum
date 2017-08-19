@@ -35,7 +35,7 @@ function template_main()
 			<div id="poll">
 				<div class="cat_bar">
 					<h3 class="catbg">
-						<span class="ie6_header floatleft"><img src="', $settings['images_url'], '/topic/', $context['poll']['is_locked'] ? 'normal_poll_locked' : 'normal_poll', '.gif" alt="" class="icon" /> ', $txt['poll'], '</span>
+						<span class="ie6_header floatleft"><img src="', $settings['images_url'], '/topic/', $context['poll']['is_locked'] ? 'normal_poll_locked' : 'normal_poll', '.gif" alt="" class="icon"> ', $txt['poll'], '</span>
 					</h3>
 				</div>
 				<div class="windowbg">
@@ -96,8 +96,8 @@ function template_main()
 			echo '
 							</ul>
 							<div class="submitbutton">
-								<input type="submit" value="', $txt['poll_vote'], '" class="button_submit" />
-								<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
+								<input type="submit" value="', $txt['poll_vote'], '" class="button_submit">
+								<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
 							</div>
 						</form>';
 		}
@@ -146,7 +146,7 @@ function template_main()
 		foreach ($context['linked_calendar_events'] as $event)
 			echo '
 							<li>
-								', ($event['can_edit'] ? '<a href="' . $event['modify_href'] . '"> <img src="' . $settings['images_url'] . '/icons/modify_small.gif" alt="" title="' . $txt['modify'] . '" class="edit_event" /></a> ' : ''), '<strong>', $event['title'], '</strong>: ', $event['start_date'], ($event['start_date'] != $event['end_date'] ? ' - ' . $event['end_date'] : ''), '
+								', ($event['can_edit'] ? '<a href="' . $event['modify_href'] . '"> <img src="' . $settings['images_url'] . '/icons/modify_small.gif" alt="" title="' . $txt['modify'] . '" class="edit_event"></a> ' : ''), '<strong>', $event['title'], '</strong>: ', $event['start_date'], ($event['start_date'] != $event['end_date'] ? ' - ' . $event['end_date'] : ''), '
 							</li>';
 
 		echo '
@@ -159,9 +159,9 @@ function template_main()
 
 	// Build the normal button array.
 	$normal_buttons = array(
-		
+
 		'reply' => array('test' => 'can_reply', 'text' => 'reply', 'image' => 'reply.gif', 'lang' => true, 'url' => $scripturl . '?action=post;topic=' . $context['current_topic'] . '.' . $context['start'] . ';last_msg=' . $context['topic_last_message'], 'active' => true),
-		'bookmark' => array('test' => 'can_make_bookmarks', 'text' => 'bookmark_add', 'lang' => true, 'url' => $scripturl . '?action=bookmarks;sa=add;topic=' . $context['current_topic'] . ';' . $context['session_var'] . '=' . $context['session_id']),	
+		'bookmark' => array('test' => 'can_make_bookmarks', 'text' => 'bookmark_add', 'lang' => true, 'url' => $scripturl . '?action=bookmarks;sa=add;topic=' . $context['current_topic'] . ';' . $context['session_var'] . '=' . $context['session_id']),
 		'add_poll' => array('test' => 'can_add_poll', 'text' => 'add_poll', 'image' => 'add_poll.gif', 'lang' => true, 'url' => $scripturl . '?action=editpoll;add;topic=' . $context['current_topic'] . '.' . $context['start']),
 		'notify' => array('test' => 'can_mark_notify', 'text' => $context['is_marked_notify'] ? 'unnotify' : 'notify', 'image' => ($context['is_marked_notify'] ? 'un' : '') . 'notify.gif', 'lang' => true, 'custom' => 'onclick="return confirm(\'' . ($context['is_marked_notify'] ? $txt['notification_disable_topic'] : $txt['notification_enable_topic']) . '\');"', 'url' => $scripturl . '?action=notify;sa=' . ($context['is_marked_notify'] ? 'off' : 'on') . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';' . $context['session_var'] . '=' . $context['session_id']),
 		'mark_unread' => array('test' => 'can_mark_unread', 'text' => 'mark_unread', 'image' => 'markunread.gif', 'lang' => true, 'url' => $scripturl . '?action=markasread;sa=topic;t=' . $context['mark_unread_time'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';' . $context['session_var'] . '=' . $context['session_id']),
@@ -186,7 +186,7 @@ function template_main()
 					<h2>
 						', $context['subject'], '
 					</h2>
-					<ul class="reset"> 
+					<ul class="reset">
 						<li class="h4"><i class="fa fa-comments fa-fw"></i>'. $context['real_num_replies'] .' '. $txt['replies'] .'</li>
 						<li class="h4"><i class="fa fa-eye fa-fw"></i>', $context['num_views'], ' '. $txt['views'] .'</li>
 					</ul>
@@ -243,30 +243,30 @@ function template_main()
 		// Show information about the poster of this message.
 		echo '
 						<div class="poster col-md-2">';
-							
+
 				// Show avatars, images, etc.?
 				if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
 				{
 					echo '
 							<a href="', $scripturl, '?action=profile;u=', $message['member']['id'], '">
-								<img src="', $message['member']['avatar']['href'], '" class="img-thumbnail img-circle" alt="*" />
+								<img src="', $message['member']['avatar']['href'], '" class="img-thumbnail img-circle" alt="*">
 							</a>';
 				}
 				else
 				{
 					echo'
 							<a href="', $scripturl, '?action=profile;u=', $message['member']['id'], '">
-								<img src="',$settings['images_url'] ,'/noavatar.png" class="img-thumbnail img-circle" alt="*" /> 
+								<img src="',$settings['images_url'] ,'/noavatar.png" class="img-thumbnail img-circle" alt="*">
 							</a>';
 				}
-				
+
 		echo'
 							<h4>';
 
 		// Show online and offline buttons?
 		if (!empty($modSettings['onlineEnable']) && !$message['member']['is_guest'])
 			echo '
-								', $context['can_send_pm'] ? '<a href="' . $message['member']['online']['href'] . '" title="' . $message['member']['online']['label'] . '">' : '', '<img src="', $message['member']['online']['image_href'], '" alt="', $message['member']['online']['text'], '" />', $context['can_send_pm'] ? '</a>' : '';
+								', $context['can_send_pm'] ? '<a href="' . $message['member']['online']['href'] . '" title="' . $message['member']['online']['label'] . '">' : '', '<img src="', $message['member']['online']['image_href'], '" alt="', $message['member']['online']['text'], '">', $context['can_send_pm'] ? '</a>' : '';
 
 		// Show a link to the member's profile.
 		echo '
@@ -275,7 +275,7 @@ function template_main()
 							<ul class="reset smalltext" id="msg_', $message['id'], '_extra_info">';
 
 
-					
+
 		// Show the member's custom title, if they have one.
 		if (!empty($message['member']['title']))
 			echo '
@@ -284,7 +284,7 @@ function template_main()
 		// Don't show these things for guests.
 		if (!$message['member']['is_guest'])
 		{
-			
+
 			// Show the stars if they are not in a group.
 				echo '
 								<li class="stars">', $message['member']['group_stars'], '</li>';
@@ -292,15 +292,15 @@ function template_main()
 			// Show how many posts they have made.
 			if (!isset($context['disabled_fields']['posts']))
 				echo '
-								<li class="postcount"><img src="',$settings['images_url'] ,'/postcount.png" /> ', $message['member']['posts'], '</li>';
+								<li class="postcount"><img src="',$settings['images_url'] ,'/postcount.png"> ', $message['member']['posts'], '</li>';
 
 			// Is karma display enabled?  Total or +/-?
 			if ($modSettings['karmaMode'] == '1')
 				echo '
-								<li class="karma"><img src="',$settings['images_url'] ,'/karma.png" />  ', $message['member']['karma']['good'] - $message['member']['karma']['bad'], '</li>';
+								<li class="karma"><img src="',$settings['images_url'] ,'/karma.png">  ', $message['member']['karma']['good'] - $message['member']['karma']['bad'], '</li>';
 			elseif ($modSettings['karmaMode'] == '2')
 				echo '
-								<li class="karma"><img src="',$settings['images_url'] ,'/karma.png" />
+								<li class="karma"><img src="',$settings['images_url'] ,'/karma.png">
 								<a href="', $scripturl, '?action=modifykarma;sa=applaud;uid=', $message['member']['id'], ';topic=', $context['current_topic'], '.' . $context['start'], ';m=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $modSettings['karmaApplaudLabel'], '</a>', $message['member']['karma']['good'], ' / <a href="', $scripturl, '?action=modifykarma;sa=smite;uid=', $message['member']['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';m=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $modSettings['karmaSmiteLabel'], '</a>', $message['member']['karma']['bad'], '';
 
 			// Is this user allowed to modify this member's karma?
@@ -361,27 +361,27 @@ function template_main()
 			if ($settings['show_profile_buttons'])
 			{
 				echo '
-								
+
 									<ul>';
 				// Don't show the profile button if you're not allowed to view the profile.
 				if ($message['member']['can_view_profile'])
 					echo '
-										<li><a href="', $message['member']['href'], '">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/icons/profile_sm.gif" alt="' . $txt['view_profile'] . '" title="' . $txt['view_profile'] . '" />' : $txt['view_profile']), '</a></li>';
+										<li><a href="', $message['member']['href'], '">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/icons/profile_sm.gif" alt="' . $txt['view_profile'] . '" title="' . $txt['view_profile'] . '">' : $txt['view_profile']), '</a></li>';
 
 				// Don't show an icon if they haven't specified a website.
 				if ($message['member']['website']['url'] != '' && !isset($context['disabled_fields']['website']))
 					echo '
-										<li><a href="', $message['member']['website']['url'], '" title="' . $message['member']['website']['title'] . '" target="_blank" class="new_win">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/www_sm.gif" alt="' . $message['member']['website']['title'] . '" />' : $txt['www']), '</a></li>';
+										<li><a href="', $message['member']['website']['url'], '" title="' . $message['member']['website']['title'] . '" target="_blank" class="new_win">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/www_sm.gif" alt="' . $message['member']['website']['title'] . '">' : $txt['www']), '</a></li>';
 
 				// Don't show the email address if they want it hidden.
 				if (in_array($message['member']['show_email'], array('yes', 'yes_permission_override', 'no_through_forum')))
 					echo '
-										<li><a href="', $scripturl, '?action=emailuser;sa=email;msg=', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/email_sm.gif" alt="' . $txt['email'] . '" title="' . $txt['email'] . '" />' : $txt['email']), '</a></li>';
+										<li><a href="', $scripturl, '?action=emailuser;sa=email;msg=', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/email_sm.gif" alt="' . $txt['email'] . '" title="' . $txt['email'] . '">' : $txt['email']), '</a></li>';
 
 				// Since we know this person isn't a guest, you *can* message them.
 				if ($context['can_send_pm'])
 					echo '
-										<li><a href="', $scripturl, '?action=pm;sa=send;u=', $message['member']['id'], '" title="', $message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline'], '">', $settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/im_' . ($message['member']['online']['is_online'] ? 'on' : 'off') . '.gif" alt="' . ($message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline']) . '" />' : ($message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline']), '</a></li>';
+										<li><a href="', $scripturl, '?action=pm;sa=send;u=', $message['member']['id'], '" title="', $message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline'], '">', $settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/im_' . ($message['member']['online']['is_online'] ? 'on' : 'off') . '.gif" alt="' . ($message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline']) . '">' : ($message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline']), '</a></li>';
 
 				echo '
 									</ul>
@@ -400,28 +400,28 @@ function template_main()
 			// Are we showing the warning status?
 			if ($message['member']['can_see_warning'])
 				echo '
-								<li class="warning">', $context['can_issue_warning'] ? '<a href="' . $scripturl . '?action=profile;area=issuewarning;u=' . $message['member']['id'] . '">' : '', '<img src="', $settings['images_url'], '/warning_', $message['member']['warning_status'], '.gif" alt="', $txt['user_warn_' . $message['member']['warning_status']], '" />', $context['can_issue_warning'] ? '</a>' : '', '<span class="warn_', $message['member']['warning_status'], '">', $txt['warn_' . $message['member']['warning_status']], '</span></li>';
+								<li class="warning">', $context['can_issue_warning'] ? '<a href="' . $scripturl . '?action=profile;area=issuewarning;u=' . $message['member']['id'] . '">' : '', '<img src="', $settings['images_url'], '/warning_', $message['member']['warning_status'], '.gif" alt="', $txt['user_warn_' . $message['member']['warning_status']], '">', $context['can_issue_warning'] ? '</a>' : '', '<span class="warn_', $message['member']['warning_status'], '">', $txt['warn_' . $message['member']['warning_status']], '</span></li>';
 		}
 		// Otherwise, show the guest's email.
 		elseif (!empty($message['member']['email']) && in_array($message['member']['show_email'], array('yes', 'yes_permission_override', 'no_through_forum')))
 			echo '
-								<li class="email"><a href="', $scripturl, '?action=emailuser;sa=email;msg=', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/email_sm.gif" alt="' . $txt['email'] . '" title="' . $txt['email'] . '" />' : $txt['email']), '</a></li>';
+								<li class="email"><a href="', $scripturl, '?action=emailuser;sa=email;msg=', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/email_sm.gif" alt="' . $txt['email'] . '" title="' . $txt['email'] . '">' : $txt['email']), '</a></li>';
 
 		// Done with the information about the poster... on to the post itself.
 		echo '
 							</ul>
 						</div>
 						<div class="col-md-10">
-							<div class="body_content"> 
+							<div class="body_content">
 								<!--<span class="arrow-left"></span> -->
 								<div class="postarea">';
-								
+
 				// If this is the first post, (#0) just say when it was posted - otherwise give the reply #.
 				if ($message['can_approve'] || $context['can_reply'] || $message['can_modify'] || $message['can_remove'] || $context['can_split'] || $context['can_restore_msg'])
-					echo '				
+					echo '
 										<div class="btn-group navbar-right">
 											<button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">Действия <span class="caret"></span></button>
-											<ul class="dropdown-menu" role="menu"">'; 
+											<ul class="dropdown-menu" role="menu"">';
 
 					// Maybe we can approve it, maybe we should?
 					if ($message['can_approve'])
@@ -462,7 +462,7 @@ function template_main()
 						echo '
 											</ul>
 										</div>';
-										
+
 										echo'
 										<ul class="reset floatright" style="margin: 5px 15px 0 7px;">';
 
@@ -470,12 +470,12 @@ function template_main()
 					if (!empty($options['display_quick_mod']) && $options['display_quick_mod'] == 1 && $message['can_remove'])
 						echo '
 											<li class="inline_mod_check" style="display: none;" id="in_topic_mod_check_', $message['id'], '"></li>';
-												
+
 										echo'
 										</ul>
 										<div class="keyinfo">
 											<div class="messageicon">
-												<img src="', $message['icon_url'] . '" alt=""', $message['can_modify'] ? ' id="msg_icon_' . $message['id'] . '"' : '', ' />
+												<img src="', $message['icon_url'] . '" alt=""', $message['can_modify'] ? ' id="msg_icon_' . $message['id'] . '"' : '', '>
 											</div>
 											<h5 id="subject_', $message['id'], '">
 												<a href="', $message['href'], '" rel="nofollow">', $message['subject'], '</a>
@@ -508,7 +508,7 @@ function template_main()
 				// Can the user modify the contents of this post?  Show the modify inline image.
 				if ($message['can_modify'])
 					echo '
-									<img src="', $settings['images_url'], '/icons/modify_inline.gif" alt="', $txt['modify_msg'], '" title="', $txt['modify_msg'], '" class="modifybutton" id="modify_button_', $message['id'], '" style="cursor: ', ($context['browser']['is_ie5'] || $context['browser']['is_ie5.5'] ? 'hand' : 'pointer'), '; display: none;" onclick="oQuickModify.modifyMsg(\'', $message['id'], '\')" />';
+									<img src="', $settings['images_url'], '/icons/modify_inline.gif" alt="', $txt['modify_msg'], '" title="', $txt['modify_msg'], '" class="modifybutton" id="modify_button_', $message['id'], '" style="cursor: ', ($context['browser']['is_ie5'] || $context['browser']['is_ie5.5'] ? 'hand' : 'pointer'), '; display: none;" onclick="oQuickModify.modifyMsg(\'', $message['id'], '\')">';
 
 				// Assuming there are attachments...
 				if (!empty($message['attachment']))
@@ -538,19 +538,19 @@ function template_main()
 						{
 							if ($attachment['thumbnail']['has_thumb'])
 								echo '
-												<a href="', $attachment['href'], ';image" id="link_', $attachment['id'], '" onclick="', $attachment['thumbnail']['javascript'], '"><img src="', $attachment['thumbnail']['href'], '" alt="" id="thumb_', $attachment['id'], '" /></a><br />';
+												<a href="', $attachment['href'], ';image" id="link_', $attachment['id'], '" onclick="', $attachment['thumbnail']['javascript'], '"><img src="', $attachment['thumbnail']['href'], '" alt="" id="thumb_', $attachment['id'], '"></a><br>';
 							else
 								echo '
-												<img src="' . $attachment['href'] . ';image" alt="" width="' . $attachment['width'] . '" height="' . $attachment['height'] . '"/><br />';
+												<img src="' . $attachment['href'] . ';image" alt="" width="' . $attachment['width'] . '" height="' . $attachment['height'] . '"/><br>';
 						}
 						echo '
-												<a href="' . $attachment['href'] . '"><img src="' . $settings['images_url'] . '/icons/clip.gif" align="middle" alt="*" />&nbsp;' . $attachment['name'] . '</a> ';
+												<a href="' . $attachment['href'] . '"><img src="' . $settings['images_url'] . '/icons/clip.gif" align="middle" alt="*">&nbsp;' . $attachment['name'] . '</a> ';
 
 						if (!$attachment['is_approved'] && $context['can_approve'])
 							echo '
 												[<a href="', $scripturl, '?action=attachapprove;sa=approve;aid=', $attachment['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['approve'], '</a>]&nbsp;|&nbsp;[<a href="', $scripturl, '?action=attachapprove;sa=reject;aid=', $attachment['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['delete'], '</a>] ';
 						echo '
-												(', $attachment['size'], ($attachment['is_image'] ? ', ' . $attachment['real_width'] . 'x' . $attachment['real_height'] . ' - ' . $txt['attach_viewed'] : ' - ' . $txt['attach_downloaded']) . ' ' . $attachment['downloads'] . ' ' . $txt['attach_times'] . '.)<br />';
+												(', $attachment['size'], ($attachment['is_image'] ? ', ' . $attachment['real_width'] . 'x' . $attachment['real_height'] . ' - ' . $txt['attach_viewed'] : ' - ' . $txt['attach_downloaded']) . ' ' . $attachment['downloads'] . ' ' . $txt['attach_times'] . '.)<br>';
 					}
 
 					// If we had unapproved attachments clean up.
@@ -585,9 +585,9 @@ function template_main()
 				// Can we issue a warning because of this post?  Remember, we can't give guests warnings.
 				if ($context['can_issue_warning'] && !$message['is_message_author'] && !$message['member']['is_guest'])
 					echo '
-										<a href="', $scripturl, '?action=profile;area=issuewarning;u=', $message['member']['id'], ';msg=', $message['id'], '"><img src="', $settings['images_url'], '/warn.gif" alt="', $txt['issue_warning_post'], '" title="', $txt['issue_warning_post'], '" /></a>';
+										<a href="', $scripturl, '?action=profile;area=issuewarning;u=', $message['member']['id'], ';msg=', $message['id'], '"><img src="', $settings['images_url'], '/warn.gif" alt="', $txt['issue_warning_post'], '" title="', $txt['issue_warning_post'], '"></a>';
 				echo '
-										<!--<img src="', $settings['images_url'], '/ip.gif" alt="" /> -->';
+										<!--<img src="', $settings['images_url'], '/ip.gif" alt=""> -->';
 
 				// Show the IP to this user for this post - because you can moderate?
 				if ($context['can_moderate_forum'] && !empty($message['member']['ip']))
@@ -644,7 +644,7 @@ function template_main()
 						</div>
 					</div>
 				</div>
-				<hr  />';
+				<hr >';
 	}
 	echo '
 				</form>
@@ -690,7 +690,7 @@ function template_main()
 				<div class="cat_bar">
 					<h3 class="catbg">
 						<span class="ie6_header floatleft"><a href="javascript:oQuickReply.swap();">
-							<img src="', $settings['images_url'], '/', $options['display_quick_reply'] == 2 ? 'collapse' : 'expand', '.gif" alt="+" id="quickReplyExpand" class="icon" />
+							<img src="', $settings['images_url'], '/', $options['display_quick_reply'] == 2 ? 'collapse' : 'expand', '.gif" alt="+" id="quickReplyExpand" class="icon">
 						</a>
 						<a href="javascript:oQuickReply.swap();">', $txt['quick_reply'], '</a>
 						</span>
@@ -703,56 +703,56 @@ function template_main()
 						', $context['is_locked'] ? '<p class="alert smalltext">' . $txt['quick_reply_warning'] . '</p>' : '',
 						$context['oldTopicError'] ? '<p class="alert smalltext">' . sprintf($txt['error_old_topic'], $modSettings['oldTopicDays']) . '</p>' : '', '
 						', $context['can_reply_approved'] ? '' : '<em>' . $txt['wait_for_approval'] . '</em>', '
-						', !$context['can_reply_approved'] && $context['require_verification'] ? '<br />' : '', '
+						', !$context['can_reply_approved'] && $context['require_verification'] ? '<br>' : '', '
 						<form action="', $scripturl, '?board=', $context['current_board'], ';action=post2" method="post" accept-charset="', $context['character_set'], '" name="postmodify" id="postmodify" onsubmit="submitonce(this);" style="margin: 0;">
-							<input type="hidden" name="topic" value="', $context['current_topic'], '" />
-							<input type="hidden" name="subject" value="', $context['response_prefix'], $context['subject'], '" />
-							<input type="hidden" name="icon" value="xx" />
-							<input type="hidden" name="from_qr" value="1" />
-							<input type="hidden" name="notify" value="', $context['is_marked_notify'] || !empty($options['auto_notify']) ? '1' : '0', '" />
-							<input type="hidden" name="not_approved" value="', !$context['can_reply_approved'], '" />
-							<input type="hidden" name="goback" value="', empty($options['return_to_post']) ? '0' : '1', '" />
-							<input type="hidden" name="last_msg" value="', $context['topic_last_message'], '" />
-							<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
-							<input type="hidden" name="seqnum" value="', $context['form_sequence_number'], '" />';
+							<input type="hidden" name="topic" value="', $context['current_topic'], '">
+							<input type="hidden" name="subject" value="', $context['response_prefix'], $context['subject'], '">
+							<input type="hidden" name="icon" value="xx">
+							<input type="hidden" name="from_qr" value="1">
+							<input type="hidden" name="notify" value="', $context['is_marked_notify'] || !empty($options['auto_notify']) ? '1' : '0', '">
+							<input type="hidden" name="not_approved" value="', !$context['can_reply_approved'], '">
+							<input type="hidden" name="goback" value="', empty($options['return_to_post']) ? '0' : '1', '">
+							<input type="hidden" name="last_msg" value="', $context['topic_last_message'], '">
+							<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
+							<input type="hidden" name="seqnum" value="', $context['form_sequence_number'], '">';
 
 			// Guests just need more.
 			if ($context['user']['is_guest'])
 				echo '
-							<strong>', $txt['name'], ':</strong> <input type="text" name="guestname" value="', $context['name'], '" size="25" class="input_text" tabindex="', $context['tabindex']++, '" />
-							<strong>', $txt['email'], ':</strong> <input type="text" name="email" value="', $context['email'], '" size="25" class="input_text" tabindex="', $context['tabindex']++, '" /><br />';
+							<strong>', $txt['name'], ':</strong> <input type="text" name="guestname" value="', $context['name'], '" size="25" class="input_text" tabindex="', $context['tabindex']++, '">
+							<strong>', $txt['email'], ':</strong> <input type="text" name="email" value="', $context['email'], '" size="25" class="input_text" tabindex="', $context['tabindex']++, '"><br>';
 
 			// Is visual verification enabled?
 			if ($context['require_verification'])
 				echo '
-							<strong>', $txt['verification'], ':</strong>', template_control_verification($context['visual_verification_id'], 'quick_reply'), '<br />';
+							<strong>', $txt['verification'], ':</strong>', template_control_verification($context['visual_verification_id'], 'quick_reply'), '<br>';
 
 			// Start of WYSIWYG Quick Reply
 
-			// Only show bbcode bar if BBCodes are enabled, AND if its a quick reply mode with bbcode bar			
+			// Only show bbcode bar if BBCodes are enabled, AND if its a quick reply mode with bbcode bar
 			if ($context['show_bbc'] && (in_array($options['wysiwyg_quick_reply'], array(0, 1, 4, 5))))
-				echo '<div id="bbcBox_message"></div>'; 			
+				echo '<div id="bbcBox_message"></div>';
 
 			// Only show smilies if smiliesare enabled AND if its a quick reply mode with smilies
 			if (!empty($context['smileys']['postform']) && (in_array($options['wysiwyg_quick_reply'], array(0, 2, 4, 6))))
-				echo ' <div id="smileyBox_message"></div>'; 				
+				echo ' <div id="smileyBox_message"></div>';
 
 			// Show the quick reply (WYSIWYG vs NON-WYSIWYG dealt with already decided in source file)
 			echo  template_control_richedit($context['post_box_name'], 'smileyBox_message', 'bbcBox_message'), '';
-			
+
 			// End of WYSIWYG Quick Reply
-			
+
 			echo '
 							<div id="qr_buttons">
-								<input type="submit" name="post" value="', $txt['post'], '" onclick="return submitThisOnce(this);" accesskey="s" tabindex="', $context['tabindex']++, '" class="button_submit" />
-								<input type="submit" name="preview" value="', $txt['preview'], '" onclick="return submitThisOnce(this);" accesskey="p" tabindex="', $context['tabindex']++, '" class="button_submit" />';
+								<input type="submit" name="post" value="', $txt['post'], '" onclick="return submitThisOnce(this);" accesskey="s" tabindex="', $context['tabindex']++, '" class="button_submit">
+								<input type="submit" name="preview" value="', $txt['preview'], '" onclick="return submitThisOnce(this);" accesskey="p" tabindex="', $context['tabindex']++, '" class="button_submit">';
 			if ($context['show_spellchecking'])
 				echo '
-								<input type="button" value="', $txt['spell_check'], '" onclick="spellCheck(\'postmodify\', \'message\');" tabindex="', $context['tabindex']++, '" class="button_submit" />';
+								<input type="button" value="', $txt['spell_check'], '" onclick="spellCheck(\'postmodify\', \'message\');" tabindex="', $context['tabindex']++, '" class="button_submit">';
 			echo '
-								<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
-								<input type="hidden" name="seqnum" value="', $context['form_sequence_number'], '" />
-							</div>	
+								<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
+								<input type="hidden" name="seqnum" value="', $context['form_sequence_number'], '">
+							</div>
 					</form>
 					</div>
 					<span class="lowerframe"><span></span></span>
@@ -761,16 +761,16 @@ function template_main()
 	}
 	else
 		echo '
-		<br class="clear" />';
+		<br class="clear">';
 
 	if ($context['show_spellchecking'])
 		echo '
-			<form action="', $scripturl, '?action=spellcheck" method="post" accept-charset="', $context['character_set'], '" name="spell_form" id="spell_form" target="spellWindow"><input type="hidden" name="spellstring" value="" /></form>
-				<script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/spellcheck.js"></script>';
+			<form action="', $scripturl, '?action=spellcheck" method="post" accept-charset="', $context['character_set'], '" name="spell_form" id="spell_form" target="spellWindow"><input type="hidden" name="spellstring" value=""></form>
+				<script src="' . $settings['default_theme_url'] . '/scripts/spellcheck.js"></script>';
 
 	echo '
-				<script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/topic.js"></script>
-				<script type="text/javascript"><!-- // --><![CDATA[';
+				<script src="' . $settings['default_theme_url'] . '/scripts/topic.js"></script>
+				<script><!-- // --><![CDATA[';
 
 	if (!empty($options['display_quick_reply']))
 		echo '
@@ -819,15 +819,15 @@ function template_main()
 							sTemplateBodyEdit: ', JavaScriptEscape('
 								<div id="quick_edit_body_container" style="width: 90%">
 									<div id="error_box" style="padding: 4px;" class="error"></div>
-									<textarea class="editor" name="message" rows="12" style="' . ($context['browser']['is_ie8'] ? 'width: 635px; max-width: 100%; min-width: 100%' : 'width: 100%') . '; margin-bottom: 10px;" tabindex="' . $context['tabindex']++ . '">%body%</textarea><br />
-									<input type="hidden" name="' . $context['session_var'] . '" value="' . $context['session_id'] . '" />
-									<input type="hidden" name="topic" value="' . $context['current_topic'] . '" />
-									<input type="hidden" name="msg" value="%msg_id%" />
+									<textarea class="editor" name="message" rows="12" style="' . ($context['browser']['is_ie8'] ? 'width: 635px; max-width: 100%; min-width: 100%' : 'width: 100%') . '; margin-bottom: 10px;" tabindex="' . $context['tabindex']++ . '">%body%</textarea><br>
+									<input type="hidden" name="' . $context['session_var'] . '" value="' . $context['session_id'] . '">
+									<input type="hidden" name="topic" value="' . $context['current_topic'] . '">
+									<input type="hidden" name="msg" value="%msg_id%">
 									<div class="righttext">
-										<input type="submit" name="post" value="' . $txt['save'] . '" tabindex="' . $context['tabindex']++ . '" onclick="return oQuickModify.modifySave(\'' . $context['session_id'] . '\', \'' . $context['session_var'] . '\');" accesskey="s" class="button_submit" />&nbsp;&nbsp;' . ($context['show_spellchecking'] ? '<input type="button" value="' . $txt['spell_check'] . '" tabindex="' . $context['tabindex']++ . '" onclick="spellCheck(\'quickModForm\', \'message\');" class="button_submit" />&nbsp;&nbsp;' : '') . '<input type="submit" name="cancel" value="' . $txt['modify_cancel'] . '" tabindex="' . $context['tabindex']++ . '" onclick="return oQuickModify.modifyCancel();" class="button_submit" />
+										<input type="submit" name="post" value="' . $txt['save'] . '" tabindex="' . $context['tabindex']++ . '" onclick="return oQuickModify.modifySave(\'' . $context['session_id'] . '\', \'' . $context['session_var'] . '\');" accesskey="s" class="button_submit">&nbsp;&nbsp;' . ($context['show_spellchecking'] ? '<input type="button" value="' . $txt['spell_check'] . '" tabindex="' . $context['tabindex']++ . '" onclick="spellCheck(\'quickModForm\', \'message\');" class="button_submit">&nbsp;&nbsp;' : '') . '<input type="submit" name="cancel" value="' . $txt['modify_cancel'] . '" tabindex="' . $context['tabindex']++ . '" onclick="return oQuickModify.modifyCancel();" class="button_submit">
 									</div>
 								</div>'), ',
-							sTemplateSubjectEdit: ', JavaScriptEscape('<input type="text" style="width: 90%;" name="subject" value="%subject%" size="80" maxlength="80" tabindex="' . $context['tabindex']++ . '" class="input_text" />'), ',
+							sTemplateSubjectEdit: ', JavaScriptEscape('<input type="text" style="width: 90%;" name="subject" value="%subject%" size="80" maxlength="80" tabindex="' . $context['tabindex']++ . '" class="input_text">'), ',
 							sTemplateBodyNormal: ', JavaScriptEscape('%body%'), ',
 							sTemplateSubjectNormal: ', JavaScriptEscape('<a href="' . $scripturl . '?topic=' . $context['current_topic'] . '.msg%msg_id%#msg%msg_id%" rel="nofollow">%subject%</a>'), ',
 							sTemplateTopSubject: ', JavaScriptEscape($txt['topic'] . ': %subject% &nbsp;(' . $txt['read'] . ' ' . $context['num_views'] . ' ' . $txt['times'] . ')'), ',
