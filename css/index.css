@@ -4208,6 +4208,10 @@ input[name=search] {
     background-color: #fff;
 }
 
+td.moderation.stickybg {
+    min-width: 60px;
+}
+
 /*new mobile*/
 @media screen and (max-width : 800px) {
 	hr {
