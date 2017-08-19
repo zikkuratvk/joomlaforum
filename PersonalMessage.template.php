@@ -346,7 +346,7 @@ function template_folder()
 		<span class="arrow-left"></span>
 		<div class="postarea">
 				<div class="btn-group navbar-right">
-					<button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">', $txt['st_actions'] , ' <span class="caret"></span></button>
+					<button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">Действия <span class="caret"></span></button>
 				<ul class="dropdown-menu" role="menu"">';
 
 			// Show reply buttons if you have the permission to send PMs.
