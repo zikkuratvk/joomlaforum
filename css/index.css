@@ -4264,7 +4264,7 @@ input[name=search] {
 		display : none;
 	}
 
-	.nextlinks_bottom {
+	.nextlinks_bottom, .nextlinks {
 		display: none;
 	}
 
