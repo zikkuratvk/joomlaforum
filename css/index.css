@@ -1770,7 +1770,7 @@ p#whoisviewing {
 		margin-left : 35px;
 	}
 
-	.body_content span.arrow-left {
+/*	.body_content span.arrow-left {
 		width        : 0;
 		height       : 0;
 		border-style : solid;
@@ -1778,7 +1778,7 @@ p#whoisviewing {
 		border-color : transparent #FFF transparent transparent;
 		position     : absolute;
 		left         : 16px;
-	}
+	}*/
 }
 
 /* poster details and list of items */
@@ -4224,6 +4224,9 @@ td.moderation.stickybg {
     padding: 5px;
 }
 
+#quickReplyOptions div#message_resizer {
+    display: none;
+}
 
 /*new mobile*/
 @media screen and (max-width : 800px) {
