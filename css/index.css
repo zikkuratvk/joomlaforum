@@ -4228,6 +4228,11 @@ td.moderation.stickybg {
     display: none;
 }
 
+.body_message .poster .fa {
+    font-size: 16px;
+    margin: 0 1px;
+}
+
 /*new mobile*/
 @media screen and (max-width : 800px) {
 	hr {
