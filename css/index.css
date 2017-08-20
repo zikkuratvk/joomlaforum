@@ -443,19 +443,19 @@ div.pagesection div.floatright input {
 	padding : 1.2em 0 0.4em 0;
 }
 
-.pagelinks a.navPages
+.pagelinks a.navPages,.pagesection a.navPages
 {
 	padding: 8px 16px;
 	border: 1px solid #0D6FAC;
 }
-.pagelinks strong
+.pagelinks strong,.pagesection strong
 {
 	background:#5B6A8C;
 	padding: 8px 16px;
 	border: 1px solid #0D6FAC;
 	color: #fff;
 }
-.pagelinks a.navPages:hover
+.pagelinks a.navPages:hover,.pagesection a.navPages:hover
 {
 	background: #0D6FAC;
 }
