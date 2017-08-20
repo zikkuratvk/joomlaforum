@@ -4272,9 +4272,11 @@ div#basicinfo .fa {
     color: #38579F;
 }
 .body_message .row { 
-	background: #fff; padding: 10px 0; 
+	background: #fff; 
+	padding: 10px 0; 
 	margin-left: 0px;
     margin-right: 0px;
+	border-radius: 4px;
 } 
 
 #forumposts .post_separator { 
