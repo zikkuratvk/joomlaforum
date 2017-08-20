@@ -4268,6 +4268,54 @@ div#basicinfo .fa {
 	opacity: 0.6;
 }
 
+.body_content a:link, .body_content a:visited, .body_content a.new_win:link, .body_content a.new_win:visited, .table_list tbody.content td.info a.subject {
+    color: #38579F;
+}
+.body_message .row { 
+	background: #fff; padding: 10px 0; 
+	margin-left: 0px;
+    margin-right: 0px;
+} 
+
+#forumposts .post_separator { 
+	display: block; margin: 0; background-color: #ddd; 
+} 
+.poster { 
+	padding: 10px 0; 
+}
+
+
+.poster .avatar {
+	display: inline-block;
+	position: relative;
+}
+.poster .online {
+	display: block;
+	position: absolute;
+	bottom: 4px;
+	right: 4px;
+	width: 24px;
+	height: 24px;
+	border: 2px solid #fff;
+	border-radius: 100%;
+	background: #00a413;
+}
+
+.poster li.karma {
+	font-size: 1.5em;
+}
+
+.poster li.karma i {
+	text-decoration: none;
+	font-size: 12px;
+}
+.poster li.karma i.fa-plus {
+	color: green;
+}
+.poster li.karma i.fa-minus {
+	color: red;
+}
+
 
 
 /*new mobile*/
@@ -4283,7 +4331,7 @@ div#basicinfo .fa {
 	}
 
 	a.navbar-brand {
-		font-size : 16px;
+		font-size : 15px;
 	}
 
 	h1 {

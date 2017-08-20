@@ -252,9 +252,12 @@ function template_main()
 				if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
 				{
 					echo '
-							<a href="', $scripturl, '?action=profile;u=', $message['member']['id'], '">
+							<a href="', $scripturl, '?action=profile;u=', $message['member']['id'], '" class="avatar">
 								<img src="', $message['member']['avatar']['href'], '" class="img-thumbnail img-circle" alt="*">
-							</a>';
+								<span class="' . ($message['member']['online']['is_online'] ? 'online' : '') . '" title="', $message['member']['online']['text'], '"></span>
+							</a>
+							
+							';
 				}
 				else
 				{
@@ -269,8 +272,8 @@ function template_main()
 
 		// Show online and offline buttons?
 		if (!empty($modSettings['onlineEnable']) && !$message['member']['is_guest'])
-			echo '
-								', $context['can_send_pm'] ? '<a href="' . $message['member']['online']['href'] . '" title="' . $message['member']['online']['label'] . '">' : '', '<i class="fa fa-user-circle' . ($message['member']['online']['is_online'] ? '-o' : '') . '" aria-hidden="true" title="', $message['member']['online']['text'], '"></i>', $context['can_send_pm'] ? '</a>' : '';
+			/*echo '
+								', $context['can_send_pm'] ? '<a href="' . $message['member']['online']['href'] . '" title="' . $message['member']['online']['label'] . '">' : '', '<i class="fa fa-user-circle' . ($message['member']['online']['is_online'] ? '-o' : '') . '" aria-hidden="true" title="', $message['member']['online']['text'], '"></i>', $context['can_send_pm'] ? '</a>' : '';*/
 
 		// Show a link to the member's profile.
 		echo '
@@ -302,7 +305,7 @@ function template_main()
 			// Is karma display enabled?  Total or +/-?
 			if ($modSettings['karmaMode'] == '1')
 				echo '
-								<li class="karma"><i class="fa fa-adjust" aria-hidden="true"></i> ', $message['member']['karma']['good'] - $message['member']['karma']['bad'], '</li>';
+								<li class="karma"><a href="'. $scripturl . '?action=ownkarma;u=', $message['member']['id'], '"><i class="fa fa-adjust" aria-hidden="true"></i></a> <a href="', $scripturl, '?action=modifykarma;sa=applaud;uid=', $message['member']['id'], ';topic=', $context['current_topic'], '.' . $context['start'], ';m=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $modSettings['karmaApplaudLabel'], '</a> ', $message['member']['karma']['good'] - $message['member']['karma']['bad'], ' <a href="', $scripturl, '?action=modifykarma;sa=smite;uid=', $message['member']['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';m=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $modSettings['karmaSmiteLabel'], '</a></li>';
 			elseif ($modSettings['karmaMode'] == '2')
 				echo '
 								<li class="karma"><i class="fa fa-adjust" aria-hidden="true"></i>
