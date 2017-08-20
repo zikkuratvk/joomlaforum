@@ -14,6 +14,10 @@ function template_main()
 {
 	global $context, $settings, $options, $scripturl, $modSettings, $txt;
 
+	//Remove [] in current pages
+	$remove=array("[","]");
+	$context['page_index']=str_replace($remove,"",$context['page_index']);
+
 	echo '
 	<a id="top"></a>';
 

@@ -14,6 +14,10 @@ function template_main()
 {
 	global $context, $settings, $options, $txt, $scripturl, $modSettings;
 
+	//Remove [] in current pages
+	$remove=array("[","]");
+	$context['page_index']=str_replace($remove,"",$context['page_index']);
+
 	// Let them know, if their report was a success!
 	if ($context['report_sent'])
 	{
