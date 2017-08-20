@@ -440,13 +440,14 @@ div.pagesection div.floatright input {
 }
 
 .pagelinks {
-	padding : 1.2em 0 0.4em 0;
+	line-height: 38px;
 }
 
 .pagelinks a.navPages,.pagesection a.navPages
 {
 	padding: 8px 16px;
 	border: 1px solid #0D6FAC;
+	border-radius: 3px;
 }
 .pagelinks strong,.pagesection strong
 {
@@ -454,10 +455,14 @@ div.pagesection div.floatright input {
 	padding: 8px 16px;
 	border: 1px solid #0D6FAC;
 	color: #fff;
+	border-radius: 3px;
 }
-.pagelinks a.navPages:hover,.pagesection a.navPages:hover
+.pagelinks a.navPages:hover, .pagelinks a:hover,.pagesection a.navPages:hover
 {
-	background: #0D6FAC;
+	background: #5b6a8c;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
 }
 /* Colors for background of posts requiring approval */
 .approvebg {
@@ -1786,15 +1791,15 @@ p#whoisviewing {
 		margin-left : 35px;
 	}
 
-/*	.body_content span.arrow-left {
-		width        : 0;
-		height       : 0;
-		border-style : solid;
-		border-width : 25px 35px 25px 0;
-		border-color : transparent #FFF transparent transparent;
-		position     : absolute;
-		left         : 16px;
-	}*/
+	/*	.body_content span.arrow-left {
+            width        : 0;
+            height       : 0;
+            border-style : solid;
+            border-width : 25px 35px 25px 0;
+            border-color : transparent #FFF transparent transparent;
+            position     : absolute;
+            left         : 16px;
+        }*/
 }
 
 /* poster details and list of items */
@@ -2680,9 +2685,9 @@ tr.windowbg td, tr.windowbg2 td, tr.approvebg td, tr.highlight2 td {
 }
 
 .subject small>a{
-	padding: 4px 8px;
-	border: 1px solid #0D6FAC;
-}
++	padding: 4px 8px;
++	border: 1px solid #0D6FAC;
++}
 /* Styles for (fatal) errors.
 ------------------------------------------------- */
 
@@ -2828,7 +2833,7 @@ dl {
 	}
 
 	#basicinfo ul li {
-		float : none !important;
+		text-align: center;
 	}
 }
 
@@ -4225,33 +4230,49 @@ input[name=search] {
 }
 
 .alert.alert-success {
-    background-color: #fff;
+	background-color: #fff;
 }
 
 td.moderation.stickybg {
-    min-width: 60px;
+	min-width: 60px;
 }
 
 #bbcBox_message div img {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 #quickReplyOptions #html_message {
-    width: 100% !important;
+	width: 100% !important;
 }
 
 #bbcBox_message select {
-    padding: 5px;
+	padding: 5px;
 }
 
 #quickReplyOptions div#message_resizer {
-    display: none;
+	display: none;
 }
 
 .body_message .poster .fa {
-    font-size: 16px;
-    margin: 0 1px;
+	font-size: 18px;
+	margin: 0 1px;
+	opacity: 0.6;
 }
+
+.body_message .poster .im_icons a .fa:hover, div#basicinfo a .fa:hover {
+	opacity: 0.9;
+}
+
+.body_message .poster .fa-user-circle-o:before {
+	color: #00bc16;
+}
+
+div#basicinfo .fa {
+	font-size: 18px;
+	opacity: 0.6;
+}
+
+
 
 /*new mobile*/
 @media screen and (max-width : 800px) {
@@ -4333,6 +4354,17 @@ td.moderation.stickybg {
 	#quickreplybox {
 		margin-top : 15px;
 	}
+
+	#basicinfo img.avatar {
+		display: inline-block;
+		text-align: center;
+	}
+
+	#basicinfo ul li {
+		display: inline-block;
+		float: none;
+		text-align: center;
+	}
 }
 
 @media screen and (max-width : 540px) {
@@ -4360,6 +4392,9 @@ td.moderation.stickybg {
 	#post_confirm_buttons .btn + .btn {
 		margin-top : 5px;
 	}
+
+
+}
 }
 
 @media (max-width : 400px) {
@@ -4385,4 +4420,16 @@ td.moderation.stickybg {
 	a.navbar-brand {
 		font-size : 14px;
 	}
+}
+/* Styles for TopFirstPost mod.
+------------------------------------------------- */
+
+ul.quickbuttons li.sticky_button {
+	background: url(../images/buttons/sticky.gif) no-repeat;
+}
+
+#forumposts .stiky_post_separator
+{
+	display: block;
+	background-color: transparent;
 }

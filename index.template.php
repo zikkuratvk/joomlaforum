@@ -124,9 +124,9 @@ function template_html_above()
 
 	// The ?fin20 part of this link is just here to make sure browsers don't cache it wrongly.
 	echo '
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin25">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin25">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin25">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin26">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -174,7 +174,7 @@ function template_html_above()
 	// Here comes the JavaScript bits!
 	echo '
 	<script src="', $settings['theme_url'], '/scripts/jquery.min.js"></script>
-	<script src="', $settings['theme_url'], '/scripts/bootstrap.min.js?fin25"></script>
+	<script src="', $settings['theme_url'], '/scripts/bootstrap.min.js?fin26"></script>
 	<script src="', $settings['theme_url'], '/scripts/redsy.js?fin25"></script>
 	<script>
 	$(document).ready(function(){
