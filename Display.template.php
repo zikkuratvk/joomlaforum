@@ -266,11 +266,12 @@ function template_main()
 		// Show online and offline buttons?
 		if (!empty($modSettings['onlineEnable']) && !$message['member']['is_guest'])
 			echo '
-								', $context['can_send_pm'] ? '<a href="' . $message['member']['online']['href'] . '" title="' . $message['member']['online']['label'] . '">' : '', '<img src="', $message['member']['online']['image_href'], '" alt="', $message['member']['online']['text'], '">', $context['can_send_pm'] ? '</a>' : '';
+								', $context['can_send_pm'] ? '<a href="' . $message['member']['online']['href'] . '" title="' . $message['member']['online']['label'] . '">' : '', '<i class="fa fa-user-circle' . ($message['member']['online']['is_online'] ? '-o' : '') . '" aria-hidden="true" title="', $message['member']['online']['text'], '"></i>', $context['can_send_pm'] ? '</a>' : '';
 
 		// Show a link to the member's profile.
 		echo '
-								', $message['member']['link'], '
+		
+								', $message['member']['link'], '					
 							</h4>
 							<ul class="reset smalltext" id="msg_', $message['id'], '_extra_info">';
 
@@ -341,8 +342,8 @@ function template_main()
 				}
 				if ($shown)
 					echo '
-									</ul>
-								</li>';
+								</ul></li>	
+								';
 			}
 
 			// This shows the popular messaging icons.
@@ -361,8 +362,9 @@ function template_main()
 			if ($settings['show_profile_buttons'])
 			{
 				echo '
-
-									<ul>';
+				<li class="im_icons">
+				<ul>
+									';
 				// Don't show the profile button if you're not allowed to view the profile.
 				if ($message['member']['can_view_profile'])
 					echo '
@@ -428,7 +430,13 @@ function template_main()
 						echo '
 												<li class="approve_button"><a href="', $scripturl, '?action=moderate;area=postmod;sa=approve;topic=', $context['current_topic'], '.', $context['start'], ';msg=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['approve'], '</a></li>';
 
-					// Can they reply? Have they turned on quick reply?
+					
+		// Can the user sticky this post?
+		if (($context['can_sticky']) && ($message['id'] == $context['topic_first_message']))
+			echo '
+         <li class="sticky_button"><a href="', $scripturl, '?action=stickypost;topic=', $context['current_topic'], '.', $context['start'], ';', $context['session_var'], '=', $context['session_id'], '">', ($context['TopFirstPost_isSticky'] ? $txt['TopFirstPost_unsticky'] : $txt['TopFirstPost_sticky']), '</a></li>';
+
+// Can they reply? Have they turned on quick reply?
 					if ($context['can_quote'] && !empty($options['display_quick_reply']))
 						echo '
 												<li class="quote_button"><a href="', $scripturl, '?action=post;quote=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';last_msg=', $context['topic_last_message'], '" onclick="return oQuickReply.quote(', $message['id'], ');">', $txt['quote'], '</a></li>';
@@ -480,7 +488,7 @@ function template_main()
 											<h5 id="subject_', $message['id'], '">
 												<a href="', $message['href'], '" rel="nofollow">', $message['subject'], '</a>
 											</h5>
-											<div class="smalltext">&#171; <strong>', !empty($message['counter']) ? $txt['reply_noun'] . ' #' . $message['counter'] : '', ' ', $txt['on'], ':</strong> ', $message['time'], ' &#187;</div>
+											<div class="smalltext">&#171; <strong>', !($message['id'] == $context['topic_first_message']) ? $txt['reply_noun'] . ' #' . $message['counter'] : '', ' ', $txt['on'], ':</strong> ', $message['time'], ' &#187;</div>
 											<div id="msg_', $message['id'], '_quick_mod"></div>
 										</div>';
 
@@ -644,7 +652,8 @@ function template_main()
 						</div>
 					</div>
 				</div>
-				<hr >';
+				
+                <hr class="' , !(($message['id'] == $context['topic_first_message']) && (($_REQUEST['start'] <> 0) || !empty($options['view_newest_first'])) && ($context['TopFirstPost_isSticky'])) ? 'post_separator' : 'stiky_post_separator' , '" />';
 	}
 	echo '
 				</form>

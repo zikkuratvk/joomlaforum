@@ -206,7 +206,7 @@ function template_folder()
 			// Show online and offline buttons?
 			if (!empty($modSettings['onlineEnable']) && !$message['member']['is_guest'])
 				echo '
-				<img src="', $message['member']['online']['image_href'], '" alt="', $message['member']['online']['text'], '">';
+				<i class="fa fa-user-circle' . ($message['member']['online']['is_online'] ? '-o' : '') . '" aria-hidden="true" title="', $message['member']['online']['text'], '"></i>';
 
 			echo '
 				', $message['member']['link'], '
@@ -228,15 +228,15 @@ function template_folder()
 				// Show how many posts they have made.
 				if (!isset($context['disabled_fields']['posts']))
 					echo '
-				<li class="postcount"><img src="',$settings['images_url'] ,'/postcount.png"> ', $message['member']['posts'], '</li>';
+				<li class="postcount"><i class="fa fa-comments" aria-hidden="true"></i> ', $message['member']['posts'], '</li>';
 
 				// Is karma display enabled?  Total or +/-?
 				if ($modSettings['karmaMode'] == '1')
 					echo '
-				<li class="karma"><img src="',$settings['images_url'] ,'/karma.png">   ', $message['member']['karma']['good'] - $message['member']['karma']['bad'], '</li>';
+				<li class="karma"><i class="fa fa-adjust" aria-hidden="true"></i>  ', $message['member']['karma']['good'] - $message['member']['karma']['bad'], '</li>';
 				elseif ($modSettings['karmaMode'] == '2')
 					echo '
-				<li class="karma"><img src="',$settings['images_url'] ,'/karma.png">   +', $message['member']['karma']['good'], '/-', $message['member']['karma']['bad'], '</li>';
+				<li class="karma"><i class="fa fa-adjust" aria-hidden="true"></i>   +', $message['member']['karma']['good'], '/-', $message['member']['karma']['bad'], '</li>';
 
 				// Is this user allowed to modify this member's karma?
 				if ($message['member']['karma']['allow'])
@@ -300,22 +300,22 @@ function template_folder()
 
 					// Show the profile button
 					echo '
-						<li><a href="', $message['member']['href'], '">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/icons/profile_sm.gif" alt="' . $txt['view_profile'] . '" title="' . $txt['view_profile'] . '">' : $txt['view_profile']), '</a></li>';
+						<li><a href="', $message['member']['href'], '">', ($settings['use_image_buttons'] ? '<i class="fa fa-user" aria-hidden="true" title="' . $txt['view_profile'] . '"></i>' : $txt['view_profile']), '</a></li>';
 
 					// Don't show an icon if they haven't specified a website.
 					if ($message['member']['website']['url'] != '' && !isset($context['disabled_fields']['website']))
 						echo '
-						<li><a href="', $message['member']['website']['url'], '" title="' . $message['member']['website']['title'] . '" target="_blank" class="new_win">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/www_sm.gif" alt="' . $message['member']['website']['title'] . '">' : $txt['www']), '</a></li>';
+						<li><a href="', $message['member']['website']['url'], '" title="' . $message['member']['website']['title'] . '" target="_blank" class="new_win">', ($settings['use_image_buttons'] ? '<i class="fa fa-external-link-square" aria-hidden="true" title="' . $message['member']['website']['title'] . '"></i>' : $txt['www']), '</a></li>';
 
 					// Don't show the email address if they want it hidden.
 					if (in_array($message['member']['show_email'], array('yes', 'yes_permission_override', 'no_through_forum')))
 						echo '
-						<li><a href="', $scripturl, '?action=emailuser;sa=email;uid=', $message['member']['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/email_sm.gif" alt="' . $txt['email'] . '" title="' . $txt['email'] . '">' : $txt['email']), '</a></li>';
+						<li><a href="', $scripturl, '?action=emailuser;sa=email;msg=', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<i class="fa fa-envelope" aria-hidden="true" title="' . $txt['email'] . '"></i>' : $txt['email']), '</a></li>';
 
 					// Since we know this person isn't a guest, you *can* message them.
 					if ($context['can_send_pm'])
 						echo '
-						<li><a href="', $scripturl, '?action=pm;sa=send;u=', $message['member']['id'], '" title="', $message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline'], '">', $settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/im_' . ($message['member']['online']['is_online'] ? 'on' : 'off') . '.gif" alt="' . ($message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline']) . '">' : ($message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline']), '</a></li>';
+						<li><a href="', $scripturl, '?action=pm;sa=send;u=', $message['member']['id'], '" title="', $message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline'], '">', $settings['use_image_buttons'] ? '<i class="fa fa-commenting' . ($message['member']['online']['is_online'] ? '-o' : '') . '" aria-hidden="true" titel="' . ($message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline']) . '"></i>' : ($message['member']['online']['is_online'] ? $txt['pm_online'] : $txt['pm_offline']), '</a></li>';
 
 					echo '
 					</ul>

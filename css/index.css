@@ -2808,7 +2808,7 @@ dl {
 	}
 
 	#basicinfo ul li {
-		float : none !important;
+		text-align: center;
 	}
 }
 
@@ -4229,9 +4229,25 @@ td.moderation.stickybg {
 }
 
 .body_message .poster .fa {
-    font-size: 16px;
+    font-size: 18px;
     margin: 0 1px;
+	opacity: 0.6;
 }
+
+.body_message .poster .im_icons a .fa:hover, div#basicinfo a .fa:hover {
+	opacity: 0.9;
+}
+
+.body_message .poster .fa-user-circle-o:before {
+    color: #00bc16;
+}
+
+div#basicinfo .fa {
+    font-size: 18px;
+	opacity: 0.6;
+}
+
+
 
 /*new mobile*/
 @media screen and (max-width : 800px) {
@@ -4313,6 +4329,17 @@ td.moderation.stickybg {
 	#quickreplybox {
 		margin-top : 15px;
 	}
+	
+	#basicinfo img.avatar {
+		display: inline-block;
+		text-align: center;
+	}
+	
+	#basicinfo ul li {
+    display: inline-block;
+    float: none;
+    text-align: center;
+}
 }
 
 @media screen and (max-width : 540px) {
@@ -4340,6 +4367,9 @@ td.moderation.stickybg {
 	#post_confirm_buttons .btn + .btn {
 		margin-top : 5px;
 	}
+	
+	
+	}
 }
 
 @media (max-width : 400px) {
@@ -4365,4 +4395,16 @@ td.moderation.stickybg {
 	a.navbar-brand {
 		font-size : 14px;
 	}
+}
+/* Styles for TopFirstPost mod.
+------------------------------------------------- */
+
+ul.quickbuttons li.sticky_button {
+	background: url(../images/buttons/sticky.gif) no-repeat;
+}
+
+#forumposts .stiky_post_separator
+{
+	display: block;
+	background-color: transparent;
 }
