@@ -440,7 +440,7 @@ div.pagesection div.floatright input {
 }
 
 .pagelinks {
-	padding : 1.2em 0 0.4em 0;
+	line-height: 38px;
 }
 
 .pagelinks a.navPages
@@ -455,9 +455,12 @@ div.pagesection div.floatright input {
 	border: 1px solid #0D6FAC;
 	color: #fff;
 }
-.pagelinks a.navPages:hover
+.pagelinks a.navPages:hover, .pagelinks a:hover
 {
-	background: #0D6FAC;
+	background: #5b6a8c;
+    color: #fff;
+	font-weight: bold;
+	text-decoration: none;
 }
 /* Colors for background of posts requiring approval */
 .approvebg {
