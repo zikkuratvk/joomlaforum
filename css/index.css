@@ -447,6 +447,7 @@ div.pagesection div.floatright input {
 {
 	padding: 8px 16px;
 	border: 1px solid #0D6FAC;
+	border-radius: 3px;
 }
 .pagelinks strong
 {
@@ -454,6 +455,7 @@ div.pagesection div.floatright input {
 	padding: 8px 16px;
 	border: 1px solid #0D6FAC;
 	color: #fff;
+	border-radius: 3px;
 }
 .pagelinks a.navPages:hover, .pagelinks a:hover
 {
