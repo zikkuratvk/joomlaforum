@@ -355,10 +355,24 @@ function template_body_above()
 function template_body_below()
 {
 	global $context, $settings, $options, $scripturl, $txt, $modSettings;
+	
+		if (!defined('_SAPE_USER')){
+        define('_SAPE_USER', 'f4848f57d06f3f89549ce8829042f78e');
+     }
+    require_once(realpath($_SERVER['DOCUMENT_ROOT'].'/'._SAPE_USER.'/sape.php'));	 
+    $o = array();
+	$o['charset'] = 'utf-8'; 
+    $sape = new SAPE_client($o); 
+    unset($o);	
+	
+	 
+	echo $sape->return_block_links();
 
 	echo '
 		</div>
 	</div></div>';
+	
+
 
 	// Show the "Powered by" and "Valid" logos, as well as the copyright. Remember, the copyright must be somewhere!
 	echo '
@@ -432,7 +446,8 @@ the trademark holder in the United States and other countries.</li>
 	if ($context['show_load_time'])
 		echo '
 		<p>', $txt['page_created'], $context['load_time'], $txt['seconds_with'], $context['load_queries'], $txt['queries'], '</p>';
-
+		
+		
 	echo '
 	</div></footer>
 	<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>

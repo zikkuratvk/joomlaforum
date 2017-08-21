@@ -2504,7 +2504,7 @@ dl.register_form dt span {
 dl.register_form dd {
 	float  : left;
 	width  : 49%;
-	margin : 0;
+	margin: 5px 0;
 }
 
 #confirm_buttons {
@@ -4106,7 +4106,7 @@ td.icon {
 }
 
 .stickybg {
-	background : #E5E5E5;
+	background : #f0f3fa;
 }
 
 .poster .im_icons ul {
@@ -4135,7 +4135,7 @@ blockquote.bbc_standard_quote, blockquote.bbc_alternate_quote {
 }
 
 .post {
-	font-size : 16px;
+	font-size : 1em;
 }
 
 hr {
@@ -4317,6 +4317,33 @@ div#basicinfo .fa {
 .poster li.karma i.fa-minus {
 	color: red;
 }
+
+body .block_links {
+    margin-top: 10px;
+    background-color: #f5f5f0!important;
+    font-family: 'Open Sans'!important;
+}
+
+body .block_links_header, body .block_links_header a {
+    color: #2A2A2A!important;
+    font-size: 14px!important;
+    font-weight: bold!important;
+    text-decoration: none!important;
+}
+
+body .block_links_header:hover, body .block_links_header a:hover {
+    color: #2A2A2A!important;
+    font-size: 14px!important;
+    font-weight: bold!important;
+    text-decoration: underline!important;
+}
+
+body .block_links_url {
+    color: #2A2A2A!important;
+    font-size: 11px!important;
+    text-decoration: none!important;
+}
+
 
 
 
