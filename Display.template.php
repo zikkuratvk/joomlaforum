@@ -278,9 +278,13 @@ function template_main()
 		// Show a link to the member's profile.
 		echo '
 		
-								', $message['member']['link'], '					
+								', $message['member']['link'], '
+															
 							</h4>
-							<ul class="reset smalltext" id="msg_', $message['id'], '_extra_info">';
+							<ul class="reset smalltext" id="msg_', $message['id'], '_extra_info">
+							<li><span class="position">', (!empty($message['member']['group']) ? $message['member']['group'] : $message['member']['post_group']), '</span></li>	
+							';
+							
 
 
 
@@ -295,7 +299,9 @@ function template_main()
 
 			// Show the stars if they are not in a group.
 				echo '
-								<li class="stars">', $message['member']['group_stars'], '</li>';
+								<li class="stars">
+								
+								', $message['member']['group_stars'], '</li>';
 
 			// Show how many posts they have made.
 			if (!isset($context['disabled_fields']['posts']))

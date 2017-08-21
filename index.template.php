@@ -126,7 +126,7 @@ function template_html_above()
 	echo '
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin27">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin28">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -545,7 +545,7 @@ function template_menu()
 						echo '
 								</li>';
 					}
-						echo '
+						echo '					
 							</ul>';
 				}
 				echo '
@@ -553,7 +553,9 @@ function template_menu()
 			}
 
 			echo '
-					</ul>
+					<li><a href="/index.php/topic,232213.0.html">
+								FAQ J3
+							</a></li></ul>
 				</div>
 			</div>
 		</div>
