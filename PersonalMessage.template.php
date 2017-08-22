@@ -14,11 +14,10 @@
 function template_pm_above()
 {
 	global $context, $settings, $options, $txt;
+    //Remove [] in current pages
+    $remove=array("[","]");
+    $context['page_index']=str_replace($remove,"",$context['page_index']);
 
-	//Remove [] in current pages
-	$remove=array("[","]");
-	$context['page_index']=str_replace($remove,"",$context['page_index']);
-	
 	echo '
 	<div id="personal_messages">';
 

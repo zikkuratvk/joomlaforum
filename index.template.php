@@ -103,8 +103,7 @@ function template_html_above()
 	// Show all the relative links, such as help, search, contents, and the like.
 	echo '
 	<link rel="help" href="', $scripturl, '?action=help">
-	<link rel="search" href="', $scripturl, '?action=search">
-	<link rel="contents" href="', $scripturl, '">';
+	<link rel="search" href="', $scripturl, '?action=search">';
 
 	// If RSS feeds are enabled, advertise the presence of one.
 	if (!empty($modSettings['xmlnews_enable']) && (!empty($modSettings['allow_guestAccess']) || $context['user']['is_logged']))
@@ -553,9 +552,16 @@ function template_menu()
 			}
 
 			echo '
-					<li><a href="/index.php/topic,232213.0.html">
-								FAQ J3
-							</a></li></ul>
+						<li class="dropdown first-level" id="faqMenu"><a class="dropdown-toggle" >FAQ <span class="caret"></span></a>
+						
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="/index.php/topic,84596.0.html">FAQ Joomla 1.5</a></li>
+								<li><a href="/index.php/topic,148002.0.html">FAQ Joomla 2.5</a></li>
+								<li><a href="/index.php/topic,232213.0.html">FAQ Joomla 3</a></li>
+							</ul>
+						</li>
+							
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -4380,13 +4380,55 @@ body .block_links_url {
     border-radius: 4px;
 }
 
+#display_jump_to {
+    display: none;
+}
 
+#moderationbuttons {
+    margin-bottom: 15px;
+}
 
+.navbar-nav > li > span {
+	padding-top: 15px;
+    padding-bottom: 15px;
+	color: #FFF;
+	line-height: 20px;
+   	padding-left: 15px;
+    padding-right: 15px;
+	display: block;
+}
+
+.navbar-nav > li > span:hover {
+    cursor: pointer;
+	background-color: #13161c;
+}
+
+.statpost {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+
+.statpost li.h4 {
+    display: inline-block;
+}
+
+div#whoisviewing {
+    display: inline-block;
+}
+
+a.linklastPost {
+    display: none;
+}
 
 /*new mobile*/
 @media screen and (max-width : 800px) {
 	hr {
 		margin : 2px -15px;
+	}
+	
+	.ya-share2 {
+		display:none;
 	}
 }
 
@@ -4473,6 +4515,18 @@ body .block_links_url {
 		display: inline-block;
 		float: none;
 		text-align: center;
+	}
+	
+	.statpost {
+		display: none;
+	}
+	
+	.display-info.alert.alert-redsy {
+		display: none;
+	}
+	
+	a.linklastPost {
+		display: inline-block;
 	}
 }
 

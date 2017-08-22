@@ -180,26 +180,27 @@ function template_main()
 	echo '
 			<div class="pagesection">
 				<div class="nextlinks">', $context['previous_next'], '</div>', template_button_strip($normal_buttons, 'right'), '
-				<div class="pagelinks floatleft">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#lastPost"><strong>' . $txt['go_down'] . '</strong></a>' : '', '</div>
+				<div class="pagelinks floatleft">', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a class="linklastPost" href="#lastPost"><strong>' . $txt['go_down'] . '</strong></a>' : '', '</div>
 			</div>';
 
 	// Show the topic information - icon, subject, etc.
 	echo '
 			<div id="forumposts">
 				<div class="display-info alert alert-redsy">
+					<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+					<script src="//yastatic.net/share2/share.js"></script>
+					<div class="ya-share2" data-services="vkontakte,facebook,gplus,twitter,viber,whatsapp,skype,telegram"></div>
 					<h2>
 						', $context['subject'], '
 					</h2>
-					<ul class="reset">
-						<li class="h4"><i class="fa fa-comments fa-fw"></i>'. $context['real_num_replies'] .' '. $txt['replies'] .'</li>
-						<li class="h4"><i class="fa fa-eye fa-fw"></i>', $context['num_views'], ' '. $txt['views'] .'</li>
-					</ul>
+					
+					
 				</div>';
 
 	if (!empty($settings['display_who_viewing']))
 	{
 		echo '
-				<p id="whoisviewing" class="smalltext">';
+				<div id="whoisviewing" class="smalltext">';
 
 		// Show just numbers...?
 		if ($settings['display_who_viewing'] == 1)
@@ -210,7 +211,14 @@ function template_main()
 
 		// Now show how many guests are here too.
 		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
-				</p>';
+				</div>
+				<div class="statpost">
+				<ul class="reset ">
+						<li class="h4"><i class="fa fa-comments fa-fw"></i>'. $context['real_num_replies'] .' '. $txt['replies'] .'</li>
+						<li class="h4"><i class="fa fa-eye fa-fw"></i>', $context['num_views'], ' '. $txt['views'] .'</li>
+					</ul>
+				</div>	
+				';
 	}
 
 	echo '
@@ -679,7 +687,7 @@ function template_main()
 	echo '
 			<div class="pagesection">
 				', template_button_strip($normal_buttons, 'right'), '
-				<div class="pagelinks floatleft">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#top"><strong>' . $txt['go_up'] . '</strong></a>' : '', '</div>
+				<div class="pagelinks floatleft">', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a class="linklastPost" href="#top"><strong>' . $txt['go_up'] . '</strong></a>' : '', '</div>
 				<div class="nextlinks_bottom">', $context['previous_next'], '</div>
 			</div>';
 
@@ -689,7 +697,7 @@ function template_main()
 		'lock' => array('test' => 'can_lock', 'text' => empty($context['is_locked']) ? 'set_lock' : 'set_unlock', 'image' => 'admin_lock.gif', 'lang' => true, 'url' => $scripturl . '?action=lock;topic=' . $context['current_topic'] . '.' . $context['start'] . ';' . $context['session_var'] . '=' . $context['session_id']),
 		'sticky-note' => array('test' => 'can_sticky', 'text' => empty($context['is_sticky']) ? 'set_sticky' : 'set_nonsticky', 'image' => 'admin_sticky.gif', 'lang' => true, 'url' => $scripturl . '?action=sticky;topic=' . $context['current_topic'] . '.' . $context['start'] . ';' . $context['session_var'] . '=' . $context['session_id']),
 		'compress' => array('test' => 'can_merge', 'text' => 'merge', 'image' => 'merge.gif', 'lang' => true, 'url' => $scripturl . '?action=mergetopics;board=' . $context['current_board'] . '.0;from=' . $context['current_topic']),
-		'calendar' => array('test' => 'calendar_post', 'text' => 'calendar_link', 'image' => 'linktocal.gif', 'lang' => true, 'url' => $scripturl . '?action=post;calendar;msg=' . $context['topic_first_message'] . ';topic=' . $context['current_topic'] . '.0'),
+		//'calendar' => array('test' => 'calendar_post', 'text' => 'calendar_link', 'image' => 'linktocal.gif', 'lang' => true, 'url' => $scripturl . '?action=post;calendar;msg=' . $context['topic_first_message'] . ';topic=' . $context['current_topic'] . '.0'),
 	);
 
 	// Restore topic. eh?  No monkey business.
