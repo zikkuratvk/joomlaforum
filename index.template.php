@@ -126,7 +126,7 @@ function template_html_above()
 	echo '
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin28">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin29">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -356,7 +356,7 @@ function template_body_below()
 {
 	global $context, $settings, $options, $scripturl, $txt, $modSettings;
 	
-		if (!defined('_SAPE_USER')){
+	if (!defined('_SAPE_USER')){
         define('_SAPE_USER', 'f4848f57d06f3f89549ce8829042f78e');
      }
     require_once(realpath($_SERVER['DOCUMENT_ROOT'].'/'._SAPE_USER.'/sape.php'));	 

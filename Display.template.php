@@ -469,6 +469,7 @@ function template_main()
 						echo '
 												<li class="remove_button"><a href="', $scripturl, '?action=deletemsg;topic=', $context['current_topic'], '.', $context['start'], ';msg=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '" onclick="return confirm(\'', $txt['remove_message'], '?\');">', $txt['remove'], '</a></li>';
 
+
 					// What about splitting it off the rest of the topic?
 					if ($context['can_split'] && !empty($context['real_num_replies']))
 						echo '
@@ -504,8 +505,9 @@ function template_main()
 											<div class="smalltext">&#171; <strong>', !($message['id'] == $context['topic_first_message']) ? $txt['reply_noun'] . ' #' . $message['counter'] : '', ' ', $txt['on'], ':</strong> ', $message['time'], ' &#187;</div>
 											<div id="msg_', $message['id'], '_quick_mod"></div>
 										</div>';
-
+								
 				// Ignoring this user? Hide the post.
+				
 				if ($ignoring)
 					echo '
 									<div id="msg_', $message['id'], '_ignored_prompt">

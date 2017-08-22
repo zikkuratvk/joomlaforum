@@ -4271,7 +4271,7 @@ div#basicinfo .fa {
 .body_content a:link, .body_content a:visited, .body_content a.new_win:link, .body_content a.new_win:visited, .table_list tbody.content td.info a.subject {
     color: #38579F;
 }
-.body_message .row { 
+.body_message .row, #personal_messages .body_message.row { 
 	background: #fff; 
 	padding: 10px 0; 
 	margin-left: 0px;
@@ -4342,6 +4342,38 @@ body .block_links_url {
     color: #2A2A2A!important;
     font-size: 11px!important;
     text-decoration: none!important;
+}
+
+.ya-share2 {
+    float: right;
+    background-color: #b5bfd6;
+    padding: 5px 0px 5px 10px;
+    border-radius: 4px;
+}
+
+#forumposts .post_separator {
+    display: none;
+}
+
+.poster ul li.stars {
+	margin: 0px 10%;
+}
+
+.poster li.postcount {
+    border-top: none;
+    border-bottom: none;
+}
+
+.poster li.karma {
+    border-bottom: none;
+}
+
+.sp-wrap {
+    border-width: 1px;
+    clear: both;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 
 
