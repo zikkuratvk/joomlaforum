@@ -443,13 +443,13 @@ div.pagesection div.floatright input {
 	line-height: 38px;
 }
 
-.pagelinks a.navPages
+.pagelinks a.navPages,.pagesection a.navPages
 {
 	padding: 8px 16px;
 	border: 1px solid #0D6FAC;
 	border-radius: 3px;
 }
-.pagelinks strong
+.pagelinks strong,.pagesection strong
 {
 	background:#5B6A8C;
 	padding: 8px 16px;
@@ -457,10 +457,10 @@ div.pagesection div.floatright input {
 	color: #fff;
 	border-radius: 3px;
 }
-.pagelinks a.navPages:hover, .pagelinks a:hover
+.pagelinks a.navPages:hover, .pagelinks a:hover,.pagesection a.navPages:hover
 {
 	background: #5b6a8c;
-    color: #fff;
+	color: #fff;
 	font-weight: bold;
 	text-decoration: none;
 }
@@ -1791,15 +1791,15 @@ p#whoisviewing {
 		margin-left : 35px;
 	}
 
-/*	.body_content span.arrow-left {
-		width        : 0;
-		height       : 0;
-		border-style : solid;
-		border-width : 25px 35px 25px 0;
-		border-color : transparent #FFF transparent transparent;
-		position     : absolute;
-		left         : 16px;
-	}*/
+	/*	.body_content span.arrow-left {
+            width        : 0;
+            height       : 0;
+            border-style : solid;
+            border-width : 25px 35px 25px 0;
+            border-color : transparent #FFF transparent transparent;
+            position     : absolute;
+            left         : 16px;
+        }*/
 }
 
 /* poster details and list of items */
@@ -2684,6 +2684,10 @@ tr.windowbg td, tr.windowbg2 td, tr.approvebg td, tr.highlight2 td {
 	background-image : none;
 }
 
+.subject small>a{
+	padding: 4px 8px;
+	border: 1px solid #0D6FAC;
+}
 /* Styles for (fatal) errors.
 ------------------------------------------------- */
 
@@ -4226,32 +4230,32 @@ input[name=search] {
 }
 
 .alert.alert-success {
-    background-color: #fff;
+	background-color: #fff;
 }
 
 td.moderation.stickybg {
-    min-width: 60px;
+	min-width: 60px;
 }
 
 #bbcBox_message div img {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 #quickReplyOptions #html_message {
-    width: 100% !important;
+	width: 100% !important;
 }
 
 #bbcBox_message select {
-    padding: 5px;
+	padding: 5px;
 }
 
 #quickReplyOptions div#message_resizer {
-    display: none;
+	display: none;
 }
 
 .body_message .poster .fa {
-    font-size: 18px;
-    margin: 0 1px;
+	font-size: 18px;
+	margin: 0 1px;
 	opacity: 0.6;
 }
 
@@ -4260,11 +4264,11 @@ td.moderation.stickybg {
 }
 
 .body_message .poster .fa-user-circle-o:before {
-    color: #00bc16;
+	color: #00bc16;
 }
 
 div#basicinfo .fa {
-    font-size: 18px;
+	font-size: 18px;
 	opacity: 0.6;
 }
 
@@ -4459,17 +4463,17 @@ body .block_links_url {
 	#quickreplybox {
 		margin-top : 15px;
 	}
-	
+
 	#basicinfo img.avatar {
 		display: inline-block;
 		text-align: center;
 	}
-	
+
 	#basicinfo ul li {
-    display: inline-block;
-    float: none;
-    text-align: center;
-}
+		display: inline-block;
+		float: none;
+		text-align: center;
+	}
 }
 
 @media screen and (max-width : 540px) {
@@ -4497,9 +4501,9 @@ body .block_links_url {
 	#post_confirm_buttons .btn + .btn {
 		margin-top : 5px;
 	}
-	
-	
-	}
+
+
+}
 }
 
 @media (max-width : 400px) {
