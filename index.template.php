@@ -125,7 +125,7 @@ function template_html_above()
 	echo '
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin32">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin33">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -174,7 +174,7 @@ function template_html_above()
 	echo '
 	<script src="', $settings['theme_url'], '/scripts/jquery.min.js"></script>
 	<script src="', $settings['theme_url'], '/scripts/bootstrap.min.js?fin26"></script>
-	<script src="', $settings['theme_url'], '/scripts/redsy.js?fin25"></script>
+	<script src="', $settings['theme_url'], '/scripts/redsy.js?fin26"></script>
 	<script>
 	$(document).ready(function(){
 		$("input[type=button]").attr("class", "btn btn-default btn-sm");

@@ -184,18 +184,9 @@ function template_main()
 			</div>';
 
 	// Show the topic information - icon, subject, etc.
-	/*echo '
+	echo '
 			<div id="forumposts">
-				<div class="display-info alert alert-redsy">
-					<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-					<script src="//yastatic.net/share2/share.js"></script>
-					<div class="ya-share2" data-services="vkontakte,facebook,gplus,twitter,viber,whatsapp,skype,telegram"></div>
-					<h2>
-						', $context['subject'], '
-					</h2>
-					
-					
-				</div>';*/
+				';
 
 	if (!empty($settings['display_who_viewing']))
 	{

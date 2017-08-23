@@ -1,4 +1,14 @@
 $(document).ready(function(){
+	if ($(window).width() < 700){
+		if($('.topic_table').length){
+			$('.breadcrumb li:eq(-2)').css('display','inline-block');
+		}
+		if($('#forumposts').length){
+			$('.breadcrumb li:eq(-2), .breadcrumb li:eq(-3)').css('display','inline-block');
+		}
+	}
+	
+	
 	dropdownHover();
 	$(".scroll-to-top").click(function()	{
 		$("html, body").animate({ scrollTop: 0 }, 600);
