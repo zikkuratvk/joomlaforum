@@ -387,9 +387,9 @@ function template_main()
 				<ul>
 									';
 				// Don't show the profile button if you're not allowed to view the profile.
-				if ($message['member']['can_view_profile'])
+				/*if ($message['member']['can_view_profile'])
 					echo '
-										<li><a href="', $message['member']['href'], '">', ($settings['use_image_buttons'] ? '<i class="fa fa-user" aria-hidden="true" title="' . $txt['view_profile'] . '"></i>' : $txt['view_profile']), '</a></li>';
+										<li><a href="', $message['member']['href'], '">', ($settings['use_image_buttons'] ? '<i class="fa fa-user" aria-hidden="true" title="' . $txt['view_profile'] . '"></i>' : $txt['view_profile']), '</a></li>';*/
 
 				// Don't show an icon if they haven't specified a website.
 				if ($message['member']['website']['url'] != '' && !isset($context['disabled_fields']['website']))
@@ -676,7 +676,7 @@ function template_main()
 					</div>
 				</div>
 				
-                <hr class="' , !(($message['id'] == $context['topic_first_message']) && (($_REQUEST['start'] <> 0) || !empty($options['view_newest_first'])) && ($context['TopFirstPost_isSticky'])) ? 'post_separator' : 'stiky_post_separator' , '" />';
+            ';
 	}
 	echo '
 				</form>
