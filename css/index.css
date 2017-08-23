@@ -212,6 +212,7 @@ em {
 .smalltext, tr.smalltext th {
 	font-size   : 0.85em;
 	font-family : verdana, sans-serif;
+	
 }
 
 .middletext {
@@ -3923,12 +3924,10 @@ ul.social li .fa-rss:hover {
 }
 
 @media (max-width : 991px) {
-	ol.breadcrumb li {
-		display : none;
-	}
+	
 
 	ol.breadcrumb li:first-child, .breadcrumb li:last-child {
-		display : inline-block;
+		display : none;
 	}
 }
 
@@ -4384,6 +4383,10 @@ body .block_links_url {
     display: none;
 }
 
+.reportlinks {
+    text-align: right;
+}
+
 #moderationbuttons {
     margin-bottom: 15px;
 }
@@ -4473,9 +4476,7 @@ a.linklastPost {
 		display : none;
 	}
 
-	#header .breadcrumb {
-		display : none;
-	}
+
 
 	div#topic_icons {
 		display : none;

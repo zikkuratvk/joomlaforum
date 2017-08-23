@@ -184,7 +184,7 @@ function template_main()
 			</div>';
 
 	// Show the topic information - icon, subject, etc.
-	echo '
+	/*echo '
 			<div id="forumposts">
 				<div class="display-info alert alert-redsy">
 					<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
@@ -195,7 +195,7 @@ function template_main()
 					</h2>
 					
 					
-				</div>';
+				</div>';*/
 
 	if (!empty($settings['display_who_viewing']))
 	{

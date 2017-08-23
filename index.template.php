@@ -125,7 +125,7 @@ function template_html_above()
 	echo '
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin29">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin31">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -342,6 +342,28 @@ function template_body_above()
 		</div>
 	</header>';
 
+
+
+	echo '<div id="context_advert_top" style="margin: 0 auto; padding: 15px 0 0; text-align: center; width: 90%; overflow: hidden">';
+        
+    	if (time() < strtotime('03.09.2017')) {
+	    echo '<a href="https://alex-kurteev.ru/op/go/joomlaforum/p/mainjoomla" target="_blank" title="Основной курс по Joomla"><img src="/sponsors/kurteev_2.jpg" alt="Основной курс по Joomla" /></a>';
+	} else {
+	    // * Kogda nichego ne pokazivaetsya iz reklami - vivodit` etot blok!
+	    echo ' <!-- joomlaforum 1 -->
+	        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2531481678919935" data-ad-slot="4050737667" data-ad-format="auto"></ins>
+	        <script>
+	            (adsbygoogle = window.adsbygoogle || []).push({});
+        	</script>';
+	}
+	
+	        //      echo '<a href="https://alex-kurteev.ru/op/go/joomlaforum/p/mainjoomla" target="_blank" title="Основной курс по Joomla"><img src="/sponsors/kurteev_1.jpg" alt="Основной курс по Joomla" /></a>';
+	        //      echo '<a href="http://joomladay.ru/" target="_blank" rel="nofollow" title="JoomlaDay 2017 in Moscow"><img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%;" src="http://joomlaforum.ru/sponsors/jd-joomlaforum.png" alt="JoomlaDay 2017 in Moscow" /></a>';
+	        
+    echo '</div>';
+
+	
+
 	// The main content should go here.
 	echo '
 	<div class="container"><div id="content_section">
@@ -410,35 +432,16 @@ the trademark holder in the United States and other countries.</li>
 		</ul>
 
 
-		<!-- Yandex.Metrika counter -->
-<script >
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter40158835 = new Ya.Metrika({
-                    id:40158835,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true,
-                    webvisor:true
-                });
-            } catch(e) { }
-        });
+<script>
+  (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
 
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
+  ga("create", "UA-5046115-16", "auto");
+  ga("send", "pageview");
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/40158835" style="position:absolute; left:-9999px;" alt=""></div></noscript>
-<!-- /Yandex.Metrika counter -->
 		';
 
 	// Show the load time?
@@ -555,9 +558,11 @@ function template_menu()
 						<li class="dropdown first-level" id="faqMenu"><a class="dropdown-toggle" >FAQ <span class="caret"></span></a>
 						
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/index.php/topic,84596.0.html">FAQ Joomla 1.5</a></li>
-								<li><a href="/index.php/topic,148002.0.html">FAQ Joomla 2.5</a></li>
 								<li><a href="/index.php/topic,232213.0.html">FAQ Joomla 3</a></li>
+								<li><a href="/index.php/topic,148002.0.html">FAQ Joomla 2.5 (версия не поддерживается)</a></li>
+								<li><a href="/index.php/topic,84596.0.html">FAQ Joomla 1.5 (версия не поддерживается)</a></li>
+								
+								
 							</ul>
 						</li>
 							
