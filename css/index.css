@@ -4435,6 +4435,10 @@ pre .hljs {
     color: #31708f;
 }
 
+.stickybg2 {
+    background: #f0f3fa;
+}
+
 
 /*new mobile*/
 @media screen and (max-width : 800px) {
@@ -4445,6 +4449,10 @@ pre .hljs {
 	.ya-share2 {
 		display:none;
 	}
+	.first_mobile {
+		 border-radius: 4px 0 0 0;
+	}
+	   
 }
 
 @media (max-width : 700px) {
