@@ -204,9 +204,10 @@ function template_main()
 		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
 				</div>
 				<div class="statpost">
-				<ul class="reset ">
+				<ul class="reset ">						
 						<li class="h4"><i class="fa fa-comments fa-fw"></i>'. $context['real_num_replies'] .' '. $txt['replies'] .'</li>
 						<li class="h4"><i class="fa fa-eye fa-fw"></i>', $context['num_views'], ' '. $txt['views'] .'</li>
+						<li class="h4"><img src="', $settings['images_url'], '/topic/', $context['class'], '.gif" alt=""></li>
 					</ul>
 				</div>	
 				';
@@ -260,10 +261,7 @@ function template_main()
 				}
 				else
 				{
-					echo'
-							<a href="', $scripturl, '?action=profile;u=', $message['member']['id'], '">
-								<img src="',$settings['images_url'] ,'/noavatar.png" class="img-thumbnail img-circle" alt="*">
-							</a>';
+					echo'';
 				}
 
 		echo'
@@ -673,6 +671,8 @@ function template_main()
 				</form>
 			</div>
 			<a id="lastPost"></a>';
+			
+		
 
 	// Show the page index... "Pages: [1]".
 	echo '
@@ -681,6 +681,9 @@ function template_main()
 				<div class="pagelinks floatleft">', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a class="linklastPost" href="#top"><strong>' . $txt['go_up'] . '</strong></a>' : '', '</div>
 				<div class="nextlinks_bottom">', $context['previous_next'], '</div>
 			</div>';
+			
+	if ($context['user']['is_guest'])
+				echo '<div class="guest-reg-form alert alert-success">Чтобы оставить сообщение,<br> Вам необходимо <a href="/index.php?action=login" rel="nofollow">Войти</a> или <a href="/index.php?action=register" rel="nofollow">Зарегистрироваться</a></div>';			
 
 	$mod_buttons = array(
 		'arrows' => array('test' => 'can_move', 'text' => 'move_topic', 'image' => 'admin_move.gif', 'lang' => true, 'url' => $scripturl . '?action=movetopic;topic=' . $context['current_topic'] . '.0'),

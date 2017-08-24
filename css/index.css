@@ -2028,8 +2028,8 @@ ul.quickbuttons li.inline_mod_check {
 }
 
 .inner {
-	padding    : 1em 1em 2px 0;
-	border-top : 1px solid #99A;
+    padding: 1em 0 2px 0;
+    border-top: 1px solid #99A;
 }
 
 img.smiley {
@@ -4368,12 +4368,12 @@ body .block_links_url {
     border-bottom: none;
 }
 
-.sp-wrap {
+.post .sp-wrap {
     border-width: 1px;
     clear: both;
     margin-bottom: 10px;
     margin-top: 10px;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 #display_jump_to {
@@ -4411,6 +4411,7 @@ body .block_links_url {
 
 .statpost li.h4 {
     display: inline-block;
+	margin-left: 4px;
 }
 
 div#whoisviewing {
@@ -4420,6 +4421,20 @@ div#whoisviewing {
 a.linklastPost {
     display: none;
 }
+
+pre .hljs {    
+    overflow-x: initial;
+}
+
+.post {
+    word-wrap: break-word;
+}
+
+.guest-reg-form {
+    text-align: center;
+    color: #31708f;
+}
+
 
 /*new mobile*/
 @media screen and (max-width : 800px) {
@@ -4542,6 +4557,10 @@ a.linklastPost {
 
 	#post_header dd, .postbox dd {
 		width : 80%;
+	}
+	
+	.body_content {
+		padding: 10px 5px;
 	}
 }
 

@@ -565,7 +565,7 @@ function template_menu()
 								
 							</ul>
 						</li>
-							
+						<li><a href="/index.php/topic,17.0.html">Правила</a></li>	
 					</ul>
 				</div>
 			</div>

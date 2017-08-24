@@ -127,7 +127,7 @@ function template_generic_menu_dropdown_above()
 	foreach ($menu_context['sections'] as $section)
 	{
 		echo '
-			<li class="dropdown"><a class="dropdown-toggle', ($section['id'] == $menu_context['current_section'] ? ' active' : ''), '" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">', $section['title'] , '</a>
+			<li class="dropdown"><a class="dropdown-toggle', ($section['id'] == $menu_context['current_section'] ? ' active' : ''), '" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">', $section['title'] , ' <span class="caret"></span></a>
 				<ul class="dropdown-menu">';
 
 		// For every area of this section show a link to that area (bold if it's currently selected.)

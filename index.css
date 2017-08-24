@@ -4424,6 +4424,10 @@ a.linklastPost {
     display: none;
 }
 
+.block_code pre code { 
+	overflow-x: scroll; 
+}
+
 /*new mobile*/
 @media screen and (max-width : 800px) {
 	hr {
