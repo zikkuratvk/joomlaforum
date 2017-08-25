@@ -4439,6 +4439,12 @@ pre .hljs {
     background: #f0f3fa;
 }
 
+.table_list tbody.content td.info a.subject + p:not([class]):not(:empty) {
+    font-size: .9em;
+    color: #777;
+    letter-spacing: .3px;
+}
+
 
 /*new mobile*/
 @media screen and (max-width : 800px) {

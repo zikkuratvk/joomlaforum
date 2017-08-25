@@ -431,55 +431,54 @@ function template_main()
 				// If this is the first post, (#0) just say when it was posted - otherwise give the reply #.
 				if ($message['can_approve'] || $context['can_reply'] || $message['can_modify'] || $message['can_remove'] || $context['can_split'] || $context['can_restore_msg'])
 					echo '
-										<div class="btn-group navbar-right">
-											<button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">Действия <span class="caret"></span></button>
-											<ul class="dropdown-menu" role="menu"">';
+										<div class="btn-group navbar-right" role="group" >
+											';
 
 					// Maybe we can approve it, maybe we should?
 					if ($message['can_approve'])
 						echo '
-												<li class="approve_button"><a href="', $scripturl, '?action=moderate;area=postmod;sa=approve;topic=', $context['current_topic'], '.', $context['start'], ';msg=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['approve'], '</a></li>';
+												<div class="btn-group" role="group" aria-label="..."><li class="approve_button"><a href="', $scripturl, '?action=moderate;area=postmod;sa=approve;topic=', $context['current_topic'], '.', $context['start'], ';msg=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['approve'], '</a></li></div	';
 
 					
 		// Can the user sticky this post?
 		if (($context['can_sticky']) && ($message['id'] == $context['topic_first_message']))
 			echo '
-         <li class="sticky_button"><a href="', $scripturl, '?action=stickypost;topic=', $context['current_topic'], '.', $context['start'], ';', $context['session_var'], '=', $context['session_id'], '">', ($context['TopFirstPost_isSticky'] ? $txt['TopFirstPost_unsticky'] : $txt['TopFirstPost_sticky']), '</a></li>';
+         <a class="btn btn-default btn-group" role="group" href="', $scripturl, '?action=stickypost;topic=', $context['current_topic'], '.', $context['start'], ';', $context['session_var'], '=', $context['session_id'], '">', ($context['TopFirstPost_isSticky'] ? $txt['TopFirstPost_unsticky'] : $txt['TopFirstPost_sticky']), '</a>';
 
 // Can they reply? Have they turned on quick reply?
 					if ($context['can_quote'] && !empty($options['display_quick_reply']))
 						echo '
-												<li class="quote_button"><a href="', $scripturl, '?action=post;quote=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';last_msg=', $context['topic_last_message'], '" onclick="return oQuickReply.quote(', $message['id'], ');">', $txt['quote'], '</a></li>';
+												<a class="btn btn-default btn-group" role="group" title="Если вы выделите часть сообщения, то будет процетировано, только выделенная часть" href="', $scripturl, '?action=post;quote=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';last_msg=', $context['topic_last_message'], '" onclick="return oQuickReply.quote(', $message['id'], ');">Цитировать</a>';
 
 					// So... quick reply is off, but they *can* reply?
 					elseif ($context['can_quote'])
 						echo '
-												<li class="quote_button"><a href="', $scripturl, '?action=post;quote=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';last_msg=', $context['topic_last_message'], '">', $txt['quote'], '</a></li>';
+												<a class="btn btn-default btn-group" role="group" href="', $scripturl, '?action=post;quote=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';last_msg=', $context['topic_last_message'], '">', $txt['quote'], '</a>';
 
 					// Can the user modify the contents of this post?
 					if ($message['can_modify'])
 						echo '
-												<li class="modify_button"><a href="', $scripturl, '?action=post;msg=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], '">', $txt['modify'], '</a></li>';
+												<a class="btn btn-default btn-group" role="group" href="', $scripturl, '?action=post;msg=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], '">', $txt['modify'], '</a>';
 
 					// How about... even... remove it entirely?!
 					if ($message['can_remove'])
 						echo '
-												<li class="remove_button"><a href="', $scripturl, '?action=deletemsg;topic=', $context['current_topic'], '.', $context['start'], ';msg=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '" onclick="return confirm(\'', $txt['remove_message'], '?\');">', $txt['remove'], '</a></li>';
+												<a class="btn btn-default btn-group" href="', $scripturl, '?action=deletemsg;topic=', $context['current_topic'], '.', $context['start'], ';msg=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '" onclick="return confirm(\'', $txt['remove_message'], '?\');">', $txt['remove'], '</a>';
 
 
 					// What about splitting it off the rest of the topic?
 					if ($context['can_split'] && !empty($context['real_num_replies']))
 						echo '
-												<li class="split_button"><a href="', $scripturl, '?action=splittopics;topic=', $context['current_topic'], '.0;at=', $message['id'], '">', $txt['split'], '</a></li>';
+												<a class="btn btn-default btn-group" href="', $scripturl, '?action=splittopics;topic=', $context['current_topic'], '.0;at=', $message['id'], '">', $txt['split'], '</a>';
 
 					// Can we restore topics?
 					if ($context['can_restore_msg'])
 						echo '
-												<li class="restore_button"><a href="', $scripturl, '?action=restoretopic;msgs=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['restore_message'], '</a></li>';
+												<a class="btn btn-default btn-group" href="', $scripturl, '?action=restoretopic;msgs=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['restore_message'], '</a>';
 
 					if ($message['can_approve'] || $context['can_reply'] || $message['can_modify'] || $message['can_remove'] || $context['can_split'] || $context['can_restore_msg'])
 						echo '
-											</ul>
+											
 										</div>';
 
 										echo'
