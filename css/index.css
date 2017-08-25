@@ -4445,6 +4445,10 @@ pre .hljs {
     letter-spacing: .3px;
 }
 
+body .block_code pre code {
+    white-space: nowrap;
+}
+
 
 /*new mobile*/
 @media screen and (max-width : 800px) {

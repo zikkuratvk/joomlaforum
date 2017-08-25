@@ -448,7 +448,7 @@ function template_main()
 // Can they reply? Have they turned on quick reply?
 					if ($context['can_quote'] && !empty($options['display_quick_reply']))
 						echo '
-												<a class="btn btn-default btn-group" role="group" title="Если вы выделите часть сообщения, то будет процетировано, только выделенная часть" href="', $scripturl, '?action=post;quote=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';last_msg=', $context['topic_last_message'], '" onclick="return oQuickReply.quote(', $message['id'], ');">Цитировать</a>';
+												<a class="btn btn-default btn-group" role="group" title="Если вы выделите часть сообщения, то будет процетировано, только выделенная часть" href="', $scripturl, '?action=post;quote=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], ';last_msg=', $context['topic_last_message'], '" onclick="return oQuickReply.quote(', $message['id'], ');"><i class="fa fa-quote-right" aria-hidden="true"></i> <span class="hidden-xs">Цитировать</span></a>';
 
 					// So... quick reply is off, but they *can* reply?
 					elseif ($context['can_quote'])
@@ -458,18 +458,18 @@ function template_main()
 					// Can the user modify the contents of this post?
 					if ($message['can_modify'])
 						echo '
-												<a class="btn btn-default btn-group" role="group" href="', $scripturl, '?action=post;msg=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], '">', $txt['modify'], '</a>';
+												<a class="btn btn-default btn-group" role="group" href="', $scripturl, '?action=post;msg=', $message['id'], ';topic=', $context['current_topic'], '.', $context['start'], '"><i class="fa fa-pencil-square" aria-hidden="true"></i> <span class="hidden-xs hidden-sm hidden-md">', $txt['modify'], '</span></a>';
 
 					// How about... even... remove it entirely?!
 					if ($message['can_remove'])
 						echo '
-												<a class="btn btn-default btn-group" href="', $scripturl, '?action=deletemsg;topic=', $context['current_topic'], '.', $context['start'], ';msg=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '" onclick="return confirm(\'', $txt['remove_message'], '?\');">', $txt['remove'], '</a>';
+												<a class="btn btn-default btn-group" href="', $scripturl, '?action=deletemsg;topic=', $context['current_topic'], '.', $context['start'], ';msg=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '" onclick="return confirm(\'', $txt['remove_message'], '?\');"><i class="fa fa-trash" aria-hidden="true"></i> <span class="hidden-xs hidden-sm hidden-md">', $txt['remove'], '</span></a>';
 
 
 					// What about splitting it off the rest of the topic?
 					if ($context['can_split'] && !empty($context['real_num_replies']))
 						echo '
-												<a class="btn btn-default btn-group" href="', $scripturl, '?action=splittopics;topic=', $context['current_topic'], '.0;at=', $message['id'], '">', $txt['split'], '</a>';
+												<a class="btn btn-default btn-group" href="', $scripturl, '?action=splittopics;topic=', $context['current_topic'], '.0;at=', $message['id'], '"><i class="fa fa-expand" aria-hidden="true"></i> <span class="hidden-xs hidden-sm hidden-md">', $txt['split'], '</span></a>';
 
 					// Can we restore topics?
 					if ($context['can_restore_msg'])

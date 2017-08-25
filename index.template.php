@@ -420,11 +420,12 @@ function template_body_below()
 			<li>
 				<a href="', !empty($settings['rss_text']) ? $settings['rss_text'] : $scripturl .'?action=.xml;type=rss' ,'" title="', $txt['rs_rss'], '"><i class="fa fa-rss fa-2x"></i></a>
 			</li>';
+	
 			echo'
 		</ul>
 		<ul class="reset">
 			<li>Работает на SMF </li>
-			<li>JoomlaForum &copy; 2006-2017</li>
+			<li>JoomlaForum &copy; 2006-' .date("Y") . '</li>
 			<li>Joomlaforum.ru is not affiliated with or endorsed by the Joomla! Project or Open Source Matters.
 The Joomla! name and logo is used under a limited license granted by Open Source Matters
 the trademark holder in the United States and other countries.</li>
