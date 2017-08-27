@@ -557,8 +557,8 @@ function template_menu()
 			
 			if (!$context['user']['is_guest'])
 				echo '
-			<li><a href="index.php?action=unread;">Прочитать</a></li>
-			<li><a href="index.php?action=unreadreplies;">Ответить</a></li>			
+			<li><a href="' , $scripturl , '?action=unread;">Прочитать</a></li>
+			<li><a href="' , $scripturl , '?action=unreadreplies;">Ответить</a></li>			
 			';
 
 			echo '
