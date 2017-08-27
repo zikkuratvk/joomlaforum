@@ -706,6 +706,19 @@ function template_main()
 	// Show the jumpto box, or actually...let Javascript do it.
 	echo '
 			<div class="plainbox" id="display_jump_to">&nbsp;</div>';
+	echo '
+	<div class="forumblock">
+			<!-- Joomlaforum bottom -->
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-2531481678919935"
+			 data-ad-slot="6275477665"
+			 data-ad-format="auto"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>		
+			';				
 
 	if ($context['can_reply'] && !empty($options['display_quick_reply']))
 	{

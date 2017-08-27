@@ -125,7 +125,7 @@ function template_html_above()
 	echo '
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin35">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin36">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -208,6 +208,13 @@ function template_html_above()
 	echo $context['html_headers'];
 
 	echo '
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2531481678919935",
+    enable_page_level_ads: true
+  });
+</script>
 </head>
 <body', !empty($settings['redsy_navbar']) ? ' style="padding-top: ' . (!empty($settings['redsy_navbar_height']) ? $settings['redsy_navbar_height'] : '50px') . ';"' :  '' ,'>';
 }
@@ -374,7 +381,7 @@ function template_body_above()
 }
 
 function template_body_below()
-{
+{	
 	global $context, $settings, $options, $scripturl, $txt, $modSettings;
 	
 	if (!defined('_SAPE_USER')){
