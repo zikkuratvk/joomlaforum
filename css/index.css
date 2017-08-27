@@ -4449,6 +4449,24 @@ body .block_code pre code {
     white-space: nowrap;
 }
 
+.body_message .col-md-10 {
+	display: flex;
+	flex-direction: column;
+}
+
+.body_message .body_content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.body_message .postarea {
+    flex: 1;
+}
+
+.body_message .row, #personal_messages .body_message.row {
+    display: flex;
+}
 
 /*new mobile*/
 @media screen and (max-width : 800px) {
