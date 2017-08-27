@@ -196,7 +196,7 @@ function template_unread()
 								', $topic['views'], ' ', $txt['views'], '
 							</td>
 							<td class="', $color_class2, ' lastpost windowbg2">
-								<a href="', $topic['last_post']['href'], '"><i class="fa fa-arrow-right fa-2x" aria-hidden="true" title="', $txt['last_post'], '" style="float: right;"></i></a>
+								<a href="', $topic['new_href'], '"><i class="fa fa-arrow-right fa-2x" aria-hidden="true" title="', $txt['last_post'], '" style="float: right;"></i></a>
 								', $topic['last_post']['time'], '<br />
 								', $txt['by'], ' ', $topic['last_post']['member']['link'], '
 							</td>';
@@ -380,7 +380,7 @@ function template_replies()
 								', $topic['views'], ' ', $txt['views'], '
 							</td>
 							<td class="', $color_class2, ' lastpost windowbg2">
-								<a href="', $topic['last_post']['href'], '"><i class="fa fa-arrow-right fa-2x" aria-hidden="true" title="', $txt['last_post'], '" style="float: right;"></i></a>
+								<a href="', $topic['new_href'], '"><i class="fa fa-arrow-right fa-2x" aria-hidden="true" title="', $txt['last_post'], '" style="float: right;"></i></a>
 								', $topic['last_post']['time'], '<br />
 								', $txt['by'], ' ', $topic['last_post']['member']['link'], '
 							</td>';
