@@ -397,10 +397,11 @@ function template_info_center()
 			<p class="tab-pane" id="stats" role="tabpanel">
 				', $context['common_stats']['total_posts'], ' ', $txt['posts_made'], ' ', $txt['in'], ' ', $context['common_stats']['total_topics'], ' ', $txt['topics'], ' ', $txt['by'], ' ', $context['common_stats']['total_members'], ' ', $txt['members'], '. ', !empty($settings['show_latest_member']) ? $txt['latest_member'] . ': <strong> ' . $context['common_stats']['latest_member']['link'] . '</strong>' : '', '<br>
 				', (!empty($context['latest_post']) ? $txt['latest_post'] . ': <strong>&quot;' . $context['latest_post']['link'] . '&quot;</strong>  ( ' . $context['latest_post']['time'] . ' )<br>' : ''), '
-
+				<a href="', $scripturl, '?action=mlist">Статистика пользователей</a>','<br>
 				<a href="', $scripturl, '?action=recent">', $txt['recent_view'], '</a>', $context['show_stats'] ? '<br>
 				<a href="' . $scripturl . '?action=stats">' . $txt['more_stats'] . '</a>' : '', '<br>
 				<a href="', $scripturl, '?action=viewkarma">'. $txt['statkarma'].'</a>','
+				
 
 			</p>';
 

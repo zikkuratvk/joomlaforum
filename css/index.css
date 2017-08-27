@@ -4468,6 +4468,10 @@ body .block_code pre code {
     display: flex;
 }
 
+li#button_mlist {
+    display: none;
+}
+
 /*new mobile*/
 @media screen and (max-width : 800px) {
 	hr {
@@ -4480,6 +4484,7 @@ body .block_code pre code {
 	.first_mobile {
 		 border-radius: 4px 0 0 0;
 	}
+	
 	   
 }
 
