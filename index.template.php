@@ -554,6 +554,12 @@ function template_menu()
 				echo '
 						</li>';
 			}
+			
+			if (!$context['user']['is_guest'])
+				echo '
+			<li><a href="index.php?action=unread;">Прочитать</a></li>
+			<li><a href="index.php?action=unreadreplies;">Ответить</a></li>			
+			';
 
 			echo '
 						<li class="dropdown first-level" id="faqMenu"><a class="dropdown-toggle" >FAQ <span class="caret"></span></a>
