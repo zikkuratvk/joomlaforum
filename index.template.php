@@ -125,7 +125,7 @@ function template_html_above()
 	echo '
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin36">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin37">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -262,7 +262,7 @@ function template_body_above()
 								<li><a href="' , $scripturl , '?action=profile;area=forumprofile;"><i class="fa fa-gear fa-fw"></i>Настройки профиля</a></li>
 								<li><a href="' , $scripturl , '?action=profile;area=account;"><i class="fa fa-wrench fa-fw"></i>Настройки аккаунта</a></li>
 								<li><a href="' , $scripturl , '?action=unread;"><i class="fa fa-comment fa-fw"></i>' , $txt['new_posts'] , '</a></li>
-								<li><a href="' , $scripturl , '?action=unreadreplies;"><i class="fa fa-comments fa-fw"></i>Новые ответы</a></li>
+								<li><a href="' , $scripturl , '?action=unreadreplies;"><i class="fa fa-comments fa-fw"></i>Новые темы</a></li>
 								<li class="divider"></li>
 								<li><a href="' , $scripturl , '?action=logout;sesc=', $context['session_id'], '"><i class="fa fa-sign-out fa-fw"></i>' , $txt['logout'] , '</a></li>
 							</ul>
@@ -431,7 +431,6 @@ function template_body_below()
 			echo'
 		</ul>
 		<ul class="reset">
-			<li>Работает на SMF </li>
 			<li>JoomlaForum &copy; 2006-' .date("Y") . '</li>
 			<li>Joomlaforum.ru is not affiliated with or endorsed by the Joomla! Project or Open Source Matters.
 The Joomla! name and logo is used under a limited license granted by Open Source Matters
@@ -564,8 +563,8 @@ function template_menu()
 			
 			if (!$context['user']['is_guest'])
 				echo '
-			<li><a href="' , $scripturl , '?action=unread;">Прочитать</a></li>
-			<li><a href="' , $scripturl , '?action=unreadreplies;">Ответить</a></li>			
+			<li><a href="' , $scripturl , '?action=unread;">Новые темы</a></li>
+			<li><a href="' , $scripturl , '?action=unreadreplies;">Новые ответы</a></li>			
 			';
 
 			echo '

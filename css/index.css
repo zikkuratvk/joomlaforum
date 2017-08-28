@@ -4459,6 +4459,10 @@ li#button_mlist {
     margin-bottom: 15px;
 }
 
+#related_block {
+    margin-top: 15px;
+}
+
 /*new mobile*/
 
 @media screen and (min-width: 800px) {
