@@ -261,8 +261,8 @@ function template_body_above()
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="' , $scripturl , '?action=profile;area=forumprofile;"><i class="fa fa-gear fa-fw"></i>Настройки профиля</a></li>
 								<li><a href="' , $scripturl , '?action=profile;area=account;"><i class="fa fa-wrench fa-fw"></i>Настройки аккаунта</a></li>
-								<li><a href="' , $scripturl , '?action=unread;"><i class="fa fa-comment fa-fw"></i>' , $txt['new_posts'] , '</a></li>
-								<li><a href="' , $scripturl , '?action=unreadreplies;"><i class="fa fa-comments fa-fw"></i>Новые темы</a></li>
+								<li><a href="' , $scripturl , '?action=unread;"><i class="fa fa-comment fa-fw"></i>Новые темы</a></li>
+								<li><a href="' , $scripturl , '?action=unreadreplies;"><i class="fa fa-comments fa-fw"></i>Новые ответы</a></li>
 								<li class="divider"></li>
 								<li><a href="' , $scripturl , '?action=logout;sesc=', $context['session_id'], '"><i class="fa fa-sign-out fa-fw"></i>' , $txt['logout'] , '</a></li>
 							</ul>
