@@ -125,7 +125,7 @@ function template_html_above()
 	echo '
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin37">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin38">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -241,10 +241,10 @@ function template_body_above()
 				</button>';
 
 			echo '
-				<a class="navbar-brand" href="/">Форум поддержки Joomla</a>
+				<a class="navbar-brand" href="/"><img src="', $settings['theme_url'], '/images/Joomla_logo.png" alt="Форум поддержки Joomla">Форум поддержки Joomla</a>
 			</div>
 			<div class="collapse navbar-collapse">
-				<button type="button" class="navbar-toggle collapsed collapsemenu" id="upshrink" style="display: none;">
+				<button type="button" class="navbar-toggle collapsed collapsemenu" id="upshrink" style="display: none;" title="Меню">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -270,13 +270,21 @@ function template_body_above()
 					</ul>';
 				}
 				echo'
+				
 				<ul class="nav-notification navbar-right">
+					
+					<li class="social-ico">
+						<a rel="nofollow" title="Страница Facebook" href="https://www.facebook.com/joomlaportal.ru/"><i class="fa fa-facebook"></i></a>
+						<a rel="nofollow" title="Блог Twitter" href="https://twitter.com/joomlaportalru"><i class="fa fa-twitter"></i></a>
+						<a rel="nofollow" title="группа Вконтакте" href="https://vk.com/joomlaportal_ru"><i class="fa fa-vk"></i></a>
+						<a rel="nofollow" title="Чат телеграмм о Joomla" href="https://t.me/joomlaru"><i class="fa fa-telegram"></i></a>
+					</li>
 					<li class="search-list">
 						<div class="search-input-wrapper">
 							<div class="search-input">
-								<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '">
+								<form name="searchform" action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '">
 									<input name="search" type="text" class="form-control input-sm inline-block">
-									<a href="#" class="input-icon text-normal">
+									<a href="javascript: document.searchform.submit();" class="input-icon text-normal">
 										<i class="fa fa-search"></i>
 									</a>';
 									// Search within current topic?
@@ -352,18 +360,31 @@ function template_body_above()
 
 
 	echo '<div id="context_advert_top" style="margin: 0 auto; padding: 15px 0 0; text-align: center; width: 90%; overflow: hidden">';
-        
-    	if (time() < strtotime('03.09.2017')) {
-	    echo '<a href="https://alex-kurteev.ru/op/go/joomlaforum/p/mainjoomla" target="_blank" title="Основной курс по Joomla"><img src="/sponsors/kurteev_2.jpg" alt="Основной курс по Joomla" /></a>';
-	} else {
-	    // * Kogda nichego ne pokazivaetsya iz reklami - vivodit` etot blok!
-	    echo ' <!-- joomlaforum 1 -->
-	        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2531481678919935" data-ad-slot="4050737667" data-ad-format="auto"></ins>
-	        <script>
-	            (adsbygoogle = window.adsbygoogle || []).push({});
-        	</script>';
+
+	// Показываем баннеры только в нужных разделах в определённое время
+	$show_banner = 0;
+	if (time() < strtotime('05.10.2017') and in_array($context['current_board'], array(256, 371, 257, 258, 260, 370, 269, 74, 263, 262))) {
+	    echo '<a href="https://ucalc.pro/?utm_source=joomlaforum.ru&utm_medium=referral&utm_campaign=joomla_section1" target="_blank" title="Калькуляторы и формы для сайтов"><img src="/sponsors/ucalc.1.1.gif" alt="Калькуляторы и формы для сайтов" /></a>';
+	    $show_banner = 1;
 	}
-	
+	if (time() < strtotime('05.10.2017') and in_array($context['current_board'], array(194))) {
+	    echo '<a href="https://ucalc.pro/?utm_source=joomlaforum.ru&utm_medium=referral&utm_campaign=joomla_topic1" target="_blank" title="Калькуляторы и формы для сайтов"><img src="/sponsors/ucalc.2.2.gif" alt="Калькуляторы и формы для сайтов" /></a>';
+	    $show_banner = 1;
+	}
+
+	if (!$show_banner) {
+    	    if (time() < strtotime('19.09.2017')) {
+    		echo '<a href="https://alex-kurteev.ru/op/go/joomlaforum/p/mainjoomla" target="_blank" title="Основной курс по Joomla"><img src="/sponsors/kurteev_1.jpg" alt="Основной курс по Joomla" /></a>';
+    	    } else {
+    		// * Kogda nichego ne pokazivaetsya iz reklami - vivodit` etot blok!
+    		echo ' <!-- joomlaforum 1 -->
+    	    	    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2531481678919935" data-ad-slot="4050737667" data-ad-format="auto"></ins>
+    	    	    <script>
+    	        	(adsbygoogle = window.adsbygoogle || []).push({});
+	    	    </script>';
+	    }
+	    
+	}
 	        //      echo '<a href="https://alex-kurteev.ru/op/go/joomlaforum/p/mainjoomla" target="_blank" title="Основной курс по Joomla"><img src="/sponsors/kurteev_1.jpg" alt="Основной курс по Joomla" /></a>';
 	        //      echo '<a href="http://joomladay.ru/" target="_blank" rel="nofollow" title="JoomlaDay 2017 in Moscow"><img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%;" src="http://joomlaforum.ru/sponsors/jd-joomlaforum.png" alt="JoomlaDay 2017 in Moscow" /></a>';
 	        
@@ -578,6 +599,7 @@ function template_menu()
 								
 							</ul>
 						</li>
+						<li><a rel="nofollow" href="https://joomlaportal.ru/">Новости</a></li>
 						<li><a href="/index.php/topic,17.0.html">Правила</a></li>	
 					</ul>
 				</div>
