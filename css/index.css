@@ -4471,16 +4471,19 @@ li#button_mlist {
   color: #70726F;
   font-size: 20px;
   padding: 10px;
-  border-right: 1px solid #70726F;
   transition: all .5s ease;
   display: inline-block!important;
 }
+
+.social-ico a:hover {
+    background-color: rgba(255,255,255,.2);
+}
+
 .social-ico a:first-child {
-  border-left: 1px solid #70726F;
 }
 
 .social-ico a:hover {
-  color: white;
+	color: white;
 }
 
 .navbar-brand img {
