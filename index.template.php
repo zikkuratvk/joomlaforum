@@ -125,7 +125,7 @@ function template_html_above()
 	echo '
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/bootstrap.css?fin26">
 	<link rel="stylesheet" href="', $settings['theme_url'], '/css/font-awesome.min.css?fin26">
-	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin38">';
+	<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin39">';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
@@ -274,10 +274,10 @@ function template_body_above()
 				<ul class="nav-notification navbar-right">
 					
 					<li class="social-ico">
-						<a rel="nofollow" title="Страница Facebook" href="https://www.facebook.com/joomlaportal.ru/"><i class="fa fa-facebook"></i></a>
-						<a rel="nofollow" title="Блог Twitter" href="https://twitter.com/joomlaportalru"><i class="fa fa-twitter"></i></a>
-						<a rel="nofollow" title="группа Вконтакте" href="https://vk.com/joomlaportal_ru"><i class="fa fa-vk"></i></a>
-						<a rel="nofollow" title="Чат телеграмм о Joomla" href="https://t.me/joomlaru"><i class="fa fa-telegram"></i></a>
+						<a rel="nofollow" target="_blank" title="Страница Facebook" href="https://www.facebook.com/joomlaportal.ru/"><i class="fa fa-facebook"></i></a>
+						<a rel="nofollow" target="_blank" title="Блог Twitter" href="https://twitter.com/joomlaportalru"><i class="fa fa-twitter"></i></a>
+						<a rel="nofollow" target="_blank" title="группа Вконтакте" href="https://vk.com/joomlaportal_ru"><i class="fa fa-vk"></i></a>
+						<a rel="nofollow" target="_blank" title="Чат телеграмм о Joomla" href="https://t.me/joomlaru"><i class="fa fa-telegram"></i></a>
 					</li>
 					<li class="search-list">
 						<div class="search-input-wrapper">

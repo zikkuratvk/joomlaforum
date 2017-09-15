@@ -4493,6 +4493,15 @@ li#button_mlist {
     margin-bottom: 3px;
 }
 
+#newsfader {
+	margin: 0 0 10px 0;
+	background: #fff;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	border-radius: 4px 4px 0 0;
+}
+
 /*new mobile*/
 
 @media screen and (min-width: 800px) {
